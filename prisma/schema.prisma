@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+model Video {
+  id          Int            @id @default(autoincrement())
+  tera_id     String    
+  slug        String      @unique
+  poster      String
+  video_url   String
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @updatedAt
+  title       String
+  description String
+  author      Author      @relation(fields: [authorId], references: [id])
+  authorId    Int    
+}
+
+model Author {
+  id            Int            @id @default(autoincrement())
+  name          String
+  email         String      @unique
+  password      String      // You might want to encrypt this
+  bio           String?
+  profile_image String?
+  username      String      @unique
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  videos        Video[]     // A one-to-many relation with Video
+}
