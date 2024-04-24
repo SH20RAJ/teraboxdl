@@ -32,7 +32,7 @@ export function VideoWatch({data}) {
           <div
             className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-sm">
             <div className="relative aspect-video">
-              <video src={replaceUrl(data.link)} controls poster={data.thumb} width={"100%"} height={"500px"}></video>
+              <video src={"/api/videos?url="+replaceUrl(data.link)} controls poster={data.thumb} width={"100%"} height={"500px"}></video>
               {/* <div
                 className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" /> */}
               
