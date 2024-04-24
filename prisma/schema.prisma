@@ -20,23 +20,25 @@ datasource db {
 
 
 
-
-
-
-
-
-
-
 model Video {
   id          Int            @id @default(autoincrement())
-  tera_id     String    
-  slug        String      @unique
-  poster      String
-  video_url   String
+  tera_id     String    @unique
+  slug        String?      @unique
+  poster      String?
+  video_url   String?
+  duration    String?
+  views       Int?
+  likes       Int?
+  dislikes    Int?
+  comments    Int?
+  category    String?
+  tags        String?
+  published   Boolean?
+  published_at DateTime?
   created_at  DateTime    @default(now())
   updated_at  DateTime    @updatedAt
-  title       String
-  description String
+  title       String?
+  description String?
   author      Author      @relation(fields: [authorId], references: [id])
   authorId    Int    
 }

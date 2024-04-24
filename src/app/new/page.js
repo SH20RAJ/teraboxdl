@@ -18,6 +18,7 @@ export default function New() {
 
 export function VideoSearch() {
   const [query, setQuery] = useState('');
+  const [videos, setVideos] = useState(null);
 
   useEffect(() => {
     let id = null;
@@ -35,6 +36,12 @@ export function VideoSearch() {
     if (id) {
       window.location.href = `/watch/${id}`;
     }
+
+    fetch("/api/feed")
+    .then((data) => data.json())
+    .then((data) => setVideos(data.data))
+    .catch((error) => console.error('Error fetching data: ', error));
+    
   }, [query]);
 
   return (<>
@@ -68,111 +75,45 @@ export function VideoSearch() {
       <h2 className="text-2xl font-bold tracking-tight mb-8">Trending Videos</h2>
       <div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <div
-          className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-          <Link className="block" href="#">
-            <img
-              alt="Video Thumbnail"
-              className="w-full aspect-video object-cover"
-              height={225}
-              src="/placeholder.svg"
-              width={400} />
-          </Link>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold mb-2">
-              <Link className="hover:underline" href="#">
-                Introducing the Frontend Cloud
-              </Link>
-            </h3>
-            <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-              <UserIcon className="h-4 w-4 mr-2" />
-              <span>Vercel</span>
-              <span className="mx-2">•</span>
-              <CalendarDaysIcon className="h-4 w-4 mr-2" />
-              <span>2 months ago</span>
-            </div>
-          </div>
-        </div>
-        <div
-          className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-          <Link className="block" href="#">
-            <img
-              alt="Video Thumbnail"
-              className="w-full aspect-video object-cover"
-              height={225}
-              src="/placeholder.svg"
-              width={400} />
-          </Link>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold mb-2">
-              <Link className="hover:underline" href="#">
-                Vercel Ship Keynote: Introducing the frontend cloud
-              </Link>
-            </h3>
-            <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-              <UserIcon className="h-4 w-4 mr-2" />
-              <span>Vercel</span>
-              <span className="mx-2">•</span>
-              <CalendarDaysIcon className="h-4 w-4 mr-2" />
-              <span>5 months ago</span>
-            </div>
-          </div>
-        </div>
-        <div
-          className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-          <Link className="block" href="#">
-            <img
-              alt="Video Thumbnail"
-              className="w-full aspect-video object-cover"
-              height={225}
-              src="/placeholder.svg"
-              width={400} />
-          </Link>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold mb-2">
-              <Link className="hover:underline" href="#">
-                Using Vercel KV with Svelte
-              </Link>
-            </h3>
-            <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-              <UserIcon className="h-4 w-4 mr-2" />
-              <span>Lee Robinson</span>
-              <span className="mx-2">•</span>
-              <CalendarDaysIcon className="h-4 w-4 mr-2" />
-              <span>1 week ago</span>
-            </div>
-          </div>
-        </div>
-        <div
-          className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-          <Link className="block" href="#">
-            <img
-              alt="Video Thumbnail"
-              className="w-full aspect-video object-cover"
-              height={225}
-              src="/placeholder.svg"
-              width={400} />
-          </Link>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold mb-2">
-              <Link className="hover:underline" href="#">
-                Loading UI with Next.js 13
-              </Link>
-            </h3>
-            <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-              <UserIcon className="h-4 w-4 mr-2" />
-              <span>Delba</span>
-              <span className="mx-2">•</span>
-              <CalendarDaysIcon className="h-4 w-4 mr-2" />
-              <span>10 days ago</span>
-            </div>
-          </div>
-        </div>
+          {
+            videos?.map((video,i)=> <VideoCard key={i} data={video}/>)
+          }
+
+
+
       </div>
     </div>
     </div>
 
   </>);
+}
+
+export function VideoCard({data}) {
+  return <div
+  className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+  <Link className="block" href={"/watch/"+data.tera_id}>
+    <img
+      alt="Video Thumbnail"
+      className="w-full aspect-video object-cover"
+      height={225}
+      src="/placeholder.svg"
+      width={400} />
+  </Link>
+  <div className="p-4">
+    <h3 className="text-lg font-semibold mb-2">
+      <Link className="hover:underline" href="#">
+        Introducing the Frontend Cloud
+      </Link>
+    </h3>
+    <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+      <UserIcon className="h-4 w-4 mr-2" />
+      <span>Vercel</span>
+      <span className="mx-2">•</span>
+      <CalendarDaysIcon className="h-4 w-4 mr-2" />
+      <span>2 months ago</span>
+    </div>
+  </div>
+</div>
 }
 
 function CalendarDaysIcon(props) {
