@@ -1,4 +1,6 @@
 import { getfeed } from "./getfeed"
+let prisma = new PrismaClient()
+
 
 
 
