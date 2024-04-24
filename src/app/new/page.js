@@ -6,6 +6,19 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useRouter } from 'next/router'
 import { Header } from '@/components/video-feeds'
+import { Skeleton } from "@/components/ui/skeleton"
+ 
+export function SkeletonCard() {
+  return (
+    <div className="flex flex-col space-y-3">
+      <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
+      </div>
+    </div>
+  )
+}
 
 export default function New() {
   return (
@@ -37,7 +50,7 @@ export function VideoSearch() {
       window.location.href = `/watch/${id}`;
     }
 
-    fetch("/api/feed")
+    fetch("/api/feed",{ cache: 'force-cache' , next: { revalidate: 3600 } })
     .then((data) => data.json())
     .then((data) => setVideos(data.data))
     .catch((error) => console.error('Error fetching data: ', error));
@@ -88,29 +101,49 @@ export function VideoSearch() {
   </>);
 }
 
-export function VideoCard({data}) {
+export   function VideoCard({data}) {
+
+  const [videoData, setVideoData] = useState(null);
+
+  useEffect(() => {
+    async function fetchVideoData() {
+      const response = await fetch(`/api/tera?data=https://teraboxapp.com/s/${data.tera_id}`);
+      const jsonData = await response.json();
+      setVideoData(jsonData);
+    }
+
+    fetchVideoData();
+  }, [data.tera_id]);
+
+// direct_link
+// file_name
+// link
+// size
+// sizebytes
+// thumb
+
   return <div
   className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
   <Link className="block" href={"/watch/"+data.tera_id}>
     <img
       alt="Video Thumbnail"
-      className="w-full aspect-video object-cover"
+      className="w-full aspect-video object-contain"
       height={225}
-      src="/placeholder.svg"
+      src={videoData?.thumb || "https://images.squarespace-cdn.com/content/v1/5bd072e1840b1694ec1f947a/1553158282843-TVK60M7IIFYQWICUDWUG/Ballet+Dancer+Gif"}
       width={400} />
   </Link>
   <div className="p-4">
     <h3 className="text-lg font-semibold mb-2">
-      <Link className="hover:underline" href="#">
-        Introducing the Frontend Cloud
+      <Link className="hover:underline" href={"/watch/"+data.tera_id}>
+        {videoData?.file_name}
       </Link>
     </h3>
     <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
       <UserIcon className="h-4 w-4 mr-2" />
-      <span>Vercel</span>
+      <span>Anonymous</span>
       <span className="mx-2">•</span>
       <CalendarDaysIcon className="h-4 w-4 mr-2" />
-      <span>2 months ago</span>
+      <span>{videoData?.size}</span>
     </div>
   </div>
 </div>

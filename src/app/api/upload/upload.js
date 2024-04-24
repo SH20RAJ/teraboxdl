@@ -3,6 +3,9 @@ import prisma from "../../../../prisma";
 export async function Upload(id) {
   console.log(id);
   let slug = id;
+  if (!(id.length > 20 && id.length < 25)){
+    return false
+  }
 
   // Check if a video with the given tera_id already exists
   const existingVideo = await prisma.video.findUnique({

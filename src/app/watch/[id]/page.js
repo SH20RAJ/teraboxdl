@@ -3,6 +3,7 @@
 import { Upload } from "@/app/api/upload/upload";
 import { Header } from "@/components/video-feeds";
 import { VideoWatch } from "@/components/video-watch";
+import Reccomendations from "./Reccomendations";
 
 
 
@@ -18,6 +19,7 @@ export default async function page(req,res) {
     <>
     <Header/>
     <VideoWatch data={data}/>
+    <Reccomendations/>
     </>
   )
 }
