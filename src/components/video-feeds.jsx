@@ -33,56 +33,7 @@ import { ContextMenuTrigger, ContextMenuItem, ContextMenuContent, ContextMenu } 
 export function VideoFeeds() {
   return (
     (<div className="flex flex-col h-screen">
-      <header
-        className="bg-gray-900 text-white py-4 px-6 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Link className="flex items-center gap-2" href="#">
-            <YoutubeIcon className="w-8 h-8 text-red-500" />
-            <span className="text-xl font-bold">YouTube</span>
-          </Link>
-          <form className="flex-1 max-w-md">
-            <div className="relative">
-              <Input
-                className="bg-gray-800 text-white rounded-full pl-10 pr-4 py-2 w-full"
-                placeholder="Search"
-                type="text" />
-              <SearchIcon
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            </div>
-          </form>
-        </div>
-        <div className="flex items-center gap-4">
-          <Link href={"/new"}>
-          <Button size="icon" variant="ghost">
-            <UploadIcon className="w-6 h-6" />
-            <span className="sr-only">Upload</span>
-          </Button>
-          </Link>
-          <Button size="icon" variant="ghost">
-            <SignalIcon className="w-6 h-6" />
-            <span className="sr-only">Notifications</span>
-          </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button size="icon" variant="ghost">
-                <Avatar className="w-8 h-8 rounded-full">
-                  <AvatarImage alt="User Avatar" src="/placeholder-user.jpg" />
-                  <AvatarFallback>JD</AvatarFallback>
-                </Avatar>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem>Your channel</DropdownMenuItem>
-              <DropdownMenuItem>YouTube Studio</DropdownMenuItem>
-              <DropdownMenuItem>Switch account</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Help</DropdownMenuItem>
-              <DropdownMenuItem>Sign out</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      </header>
+      <Header/>
       <div className="flex flex-1">
         <nav className="bg-gray-900 text-white py-6 px-4 flex flex-col gap-4">
           <Button className="justify-start gap-2" size="sm" variant="ghost">
@@ -527,4 +478,60 @@ function YoutubeIcon(props) {
       <path d="m10 15 5-3-5-3z" />
     </svg>)
   );
+}
+
+
+
+export function Header(){
+  return <header
+  className="bg-gray-900 text-white py-4 px-6 flex items-center justify-between">
+  <div className="flex items-center gap-4">
+    <Link className="flex items-center gap-2" href="/">
+      <YoutubeIcon className="w-8 h-8 text-red-500" />
+      <span className="text-xl font-bold">TeraDl</span>
+    </Link>
+    <form className="flex-1 max-w-md">
+      <div className="relative">
+        <Input
+          className="bg-gray-800 text-white rounded-full pl-10 pr-4 py-2 w-full"
+          placeholder="Search"
+          type="text" />
+        <SearchIcon
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+      </div>
+    </form>
+  </div>
+  <div className="flex items-center gap-4">
+    <Link href={"/new"}>
+    <Button size="icon" variant="ghost">
+      <UploadIcon className="w-6 h-6" />
+      <span className="sr-only">Upload</span>
+    </Button>
+    </Link>
+    <Button size="icon" variant="ghost">
+      <SignalIcon className="w-6 h-6" />
+      <span className="sr-only">Notifications</span>
+    </Button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button size="icon" variant="ghost">
+          <Avatar className="w-8 h-8 rounded-full">
+            <AvatarImage alt="User Avatar" src="/placeholder-user.jpg" />
+            <AvatarFallback>JD</AvatarFallback>
+          </Avatar>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem>Your channel</DropdownMenuItem>
+        <DropdownMenuItem>YouTube Studio</DropdownMenuItem>
+        <DropdownMenuItem>Switch account</DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+        <DropdownMenuItem>Help</DropdownMenuItem>
+        <DropdownMenuItem>Sign out</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  </div>
+</header>
+
 }
