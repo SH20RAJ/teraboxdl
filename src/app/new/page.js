@@ -7,6 +7,7 @@ import Link from "next/link"
 import { useRouter } from 'next/router'
 import { Header } from '@/components/video-feeds'
 import { Skeleton } from "@/components/ui/skeleton"
+import useSWR from 'swr'
  
 export function SkeletonCard() {
   return (
@@ -28,10 +29,11 @@ export default function New() {
   )
 }
 
+const fetcher = (url) => fetch(url).then((res) => res.json())
 
 export function VideoSearch() {
   const [query, setQuery] = useState('');
-  const [videos, setVideos] = useState(null);
+  const { data, error } = useSWR('/api/feed', fetcher, { refreshInterval: 100 })
 
   useEffect(() => {
     let id = null;
@@ -49,13 +51,11 @@ export function VideoSearch() {
     if (id) {
       window.location.href = `/watch/${id}`;
     }
-
-    fetch("/api/feed",{ cache: 'force-cache' , next: { revalidate: 3600 } })
-    .then((data) => data.json())
-    .then((data) => setVideos(data.data))
-    .catch((error) => console.error('Error fetching data: ', error));
-    
   }, [query]);
+
+  // if (error) return <div>Failed to load videos</div>
+  // if (!data) return <SkeletonCard />
+
 
   return (<>
   <div>
@@ -89,7 +89,7 @@ export function VideoSearch() {
       <div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {
-            videos?.map((video,i)=> <VideoCard key={i} data={video}/>)
+            data?.data?.map((video,i)=> <VideoCard key={i} data={video}/>)
           }
 
 
