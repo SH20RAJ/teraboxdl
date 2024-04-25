@@ -29,7 +29,7 @@ export function VideoWatch({ data }) {
             <div className="relative aspect-video w-full max-h-[600px] min-h-[600px]">
               <video
                 className=" h-full"
-                src={"/api/videos?url=" + replaceUrl(data.link)}
+                src={"https://teradl.shraj.workers.dev/?url=" + replaceUrl(data.link)}
                 controls
                 poster={data.thumb}
                 width={"100%"}
