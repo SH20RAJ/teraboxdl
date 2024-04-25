@@ -1,5 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-let prisma = new PrismaClient()
+import prisma from "../../../../prisma"
 
 export async function getfeed(){
     let response = await prisma.video.findMany({
