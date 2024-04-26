@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import { Header } from '@/components/video-feeds'
 import { Skeleton } from "@/components/ui/skeleton"
 import useSWR from 'swr'
+import { relativeDate } from '@/lib/use'
  
 export function SkeletonCard() {
   return (
@@ -140,7 +141,7 @@ export   function VideoCard({data}) {
     </h3>
     <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
       <UserIcon className="h-4 w-4 mr-2" />
-      <span>Anonymous</span>
+      <span>{relativeDate(data.created_at)}</span>
       <span className="mx-2">•</span>
       <CalendarDaysIcon className="h-4 w-4 mr-2" />
       <span>{videoData?.size}</span>
@@ -214,4 +215,29 @@ function UserIcon(props) {
       <circle cx="12" cy="7" r="4" />
     </svg>)
   );
+}
+
+
+export function convertToRelativeDate(timestamp) {
+  const parsedDate = new Date(timestamp);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now - parsedDate) / 1000);
+
+  const intervals = [
+    { name: 'year', seconds: 60 * 60 * 24 * 365 },
+    { name: 'month', seconds: 60 * 60 * 24 * 30 },
+    { name: 'week', seconds: 60 * 60 * 24 * 7 },
+    { name: 'day', seconds: 60 * 60 * 24 },
+    { name: 'hour', seconds: 60 * 60 },
+    { name: 'minute', seconds: 60 },
+  ];
+
+  for (const { name, seconds } of intervals) {
+    const count = Math.floor(diffInSeconds / seconds);
+    if (count >= 1) {
+      return `${count} ${name}${count > 1 ? 's' : ''} ago`;
+    }
+  }
+
+  return 'Just now';
 }

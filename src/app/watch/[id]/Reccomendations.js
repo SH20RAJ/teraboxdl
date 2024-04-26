@@ -8,7 +8,7 @@ export default function Reccomendations() {
   
     useEffect(() => {
   
-      fetch("/api/feed")
+      fetch("/api/feed?random=1")
       .then((data) => data.json())
       .then((data) => setVideos(shuffleArray(data.data)))
       .catch((error) => console.error('Error fetching data: ', error));

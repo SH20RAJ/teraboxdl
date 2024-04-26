@@ -3,9 +3,20 @@ import prisma from "../../../../prisma";
 export async function Upload(id) {
   console.log(id);
   let slug = id;
-  if (!(id.length > 20 && id.length < 25)){
+  if (!(id.length == 23)){
     return false
   }
+
+  // async function CheckID(id){
+  //   let data = await fetch(process.env.URL+'/api/tera?data=https://teraboxapp.com/s/'+id)
+  //   data = await data.json()
+  //   return data.file_name
+  // }
+  // let title = await CheckID()
+
+  // if(!title){
+  //   return false
+  // }
 
   // Check if a video with the given tera_id already exists
   const existingVideo = await prisma.video.findUnique({
@@ -24,6 +35,7 @@ export async function Upload(id) {
     data: {
       tera_id: id,
       authorId: 1,
+      // title,
       slug,
     },
   });
