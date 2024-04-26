@@ -508,20 +508,33 @@ export function Header(){
       <span className="sr-only">Upload</span>
     </Button>
     </Link>
+    <Link href={"https://teraboxdl-3xv9.onrender.com/"}>
     <Button size="icon" variant="ghost">
       <SignalIcon className="w-6 h-6" />
       <span className="sr-only">Notifications</span>
     </Button>
+    </Link>
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button size="icon" variant="ghost">
           <Avatar className="w-8 h-8 rounded-full">
             <AvatarImage alt="User Avatar" src="/placeholder-user.jpg" />
-            <AvatarFallback>JD</AvatarFallback>
+            <AvatarFallback>Try</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
+        <DropdownMenuItem>If this site is not working try below listed sites</DropdownMenuItem>
+        <DropdownMenuItem>
+        <Link href={"https://teraboxdl-mu.vercel.app/"}>
+          Teradl - 1 (vercel)
+        </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+        <Link href={"https://teraboxdl-3xv9.onrender.com/"}>
+          Teradl - 2 (render)
+        </Link>
+        </DropdownMenuItem>
         <DropdownMenuItem>Your channel</DropdownMenuItem>
         <DropdownMenuItem>YouTube Studio</DropdownMenuItem>
         <DropdownMenuItem>Switch account</DropdownMenuItem>
