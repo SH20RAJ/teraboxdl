@@ -29,7 +29,7 @@ export function VideoWatch({ data }) {
             <div className="relative aspect-video w-full max-h-[600px] min-h-[600px]">
               <video
                 className=" h-full"
-                src={"https://teradl.shraj.workers.dev/?url=" + replaceUrl(data.link)}
+                src={ process.env.CFW && process.env.CFW +"?url=" + replaceUrl(data.link) || "/api/videos?url=" + replaceUrl(data.link)}
                 controls
                 poster={data.thumb}
                 width={"100%"}
@@ -52,7 +52,7 @@ export function VideoWatch({ data }) {
               </div> */}
                 Desc :- {data.file_name}
                 <title>{data.file_name}</title>
-                <Link target="_" href={replaceUrl(data.link)} className="ml-10" download>
+                <a download="hi.mp4" target="_" href={"https://teradl.shraj.workers.dev/?url="+replaceUrl(data.link)} className="ml-10" >
                   <Button variant="outline">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ export function VideoWatch({ data }) {
                       />
                     </svg>
                   </Button>
-                </Link>
+                </a>
               </p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">

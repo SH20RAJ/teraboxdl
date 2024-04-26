@@ -134,7 +134,7 @@ export   function VideoCard({data}) {
   </Link>
   <div className="p-4">
     <h3 className="text-lg font-semibold mb-2">
-      <Link className="hover:underline" href={"/watch/"+data.tera_id}>
+      <Link className="hover:underline" href={"/watch/"+data.tera_id} prefetch={true}>
         {videoData?.file_name}
       </Link>
     </h3>
