@@ -30,7 +30,7 @@ function findBetween(str, start, end) {
 }
 
 async function getCookie(){
-  let res = await fetch("https://gist.githubusercontent.com/SH20RAJ/493f976a0464c233b3992f99e07acd77/raw/7eb6d1e3dca20026dd4ae186c30486aca1d15650/terabox-cookies.txt",{
+  let res = await fetch("https://gist.githubusercontent.com/SH20RAJ/493f976a0464c233b3992f99e07acd77/raw/1b913c66f1fa101421b537f8cfb733201ab662c2/terabox-cookies.txt",{
     cache: 'force-cache' 
     })
   return await res.text()
