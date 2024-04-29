@@ -29,6 +29,14 @@ function findBetween(str, start, end) {
   return str.substring(startIndex, endIndex);
 }
 
+async function getCookie(){
+  let res = await fetch("https://gist.githubusercontent.com/SH20RAJ/493f976a0464c233b3992f99e07acd77/raw/7eb6d1e3dca20026dd4ae186c30486aca1d15650/terabox-cookies.txt",{
+    cache: 'force-cache' 
+    })
+  return await res.text()
+}
+console.log(await getCookie());
+
 export async function GET(req, res) {
   const { searchParams: params } = new URL(req.url);
   if (!params.has("data")) {
