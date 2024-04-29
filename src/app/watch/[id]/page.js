@@ -12,9 +12,10 @@ export default async function page(req,res) {
   // console.log("wddwqdwq",res);
     let id = req.params.id;
     
-    let data = await fetch(process.env.URL+'/api/tera?data=https://teraboxapp.com/s/'+id)
+    let data = await fetch(process.env.URL+'/api/yttera?id='+id);
     data = await data.json()
-    let upload = await Upload(id)
+    data = data.response[0]
+    // let upload = await Upload(id)
   return (
     <>
     <Header/>

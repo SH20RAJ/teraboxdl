@@ -107,10 +107,16 @@ export   function VideoCard({data}) {
   const [videoData, setVideoData] = useState(null);
 
   useEffect(() => {
+    // async function fetchVideoData() {
+    //   const response = await fetch(`/api/tera?data=https://terabox.app/s/${data.tera_id}`);
+    //   const jsonData = await response.json();
+    //   setVideoData(jsonData);
+    // }
+
     async function fetchVideoData() {
-      const response = await fetch(`/api/tera?data=https://teraboxapp.com/s/${data.tera_id}`);
+      const response = await fetch(`/api/yttera?id=${data.tera_id}`);
       const jsonData = await response.json();
-      setVideoData(jsonData);
+      setVideoData(jsonData.response[0]);
     }
 
     fetchVideoData();
@@ -130,13 +136,13 @@ export   function VideoCard({data}) {
       alt="Video Thumbnail"
       className="w-full aspect-video object-contain"
       height={225}
-      src={videoData?.thumb || "https://images.squarespace-cdn.com/content/v1/5bd072e1840b1694ec1f947a/1553158282843-TVK60M7IIFYQWICUDWUG/Ballet+Dancer+Gif"}
+      src={videoData?.thumbnail || "https://images.squarespace-cdn.com/content/v1/5bd072e1840b1694ec1f947a/1553158282843-TVK60M7IIFYQWICUDWUG/Ballet+Dancer+Gif"}
       width={400} />
   </Link>
   <div className="p-4">
     <h3 className="text-lg font-semibold mb-2">
       <Link className="hover:underline" href={"/watch/"+data.tera_id} prefetch={true}>
-        {videoData?.file_name}
+        {videoData?.title}
       </Link>
     </h3>
     <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
@@ -144,7 +150,7 @@ export   function VideoCard({data}) {
       <span>{relativeDate(data.created_at)}</span>
       <span className="mx-2">•</span>
       <CalendarDaysIcon className="h-4 w-4 mr-2" />
-      <span>{videoData?.size}</span>
+      {/* <span>{videoData?.size}</span> */}
     </div>
   </div>
 </div>

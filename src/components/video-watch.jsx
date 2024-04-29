@@ -29,9 +29,9 @@ export function VideoWatch({ data }) {
             <div className="relative aspect-video w-full max-h-[600px] min-h-[600px]">
               <video
                 className=" h-full"
-                src={ process.env.CFW && process.env.CFW +"?url=" + replaceUrl(data.link) || "/api/videos?url=" + replaceUrl(data.link)}
+                src={ process.env.CFW && process.env.CFW +"?url=" + replaceUrl(data.resolutions['Fast Download']) || "/api/videos?url=" + replaceUrl(data.resolutions['Fast Download'])}
                 controls
-                poster={data.thumb}
+                poster={data.thumbnail}
                 width={"100%"}
                 height={"100%"}
               ></video>
@@ -50,9 +50,9 @@ export function VideoWatch({ data }) {
                 {/* <div className="absolute bottom-4 left-4 text-white text-lg font-semibold">
                 {data.file_name}
               </div> */}
-                Desc :- {data.file_name}
-                <title>{data.file_name}</title>
-                <a download="hi.mp4" target="_" href={"https://teradl.shraj.workers.dev/?url="+replaceUrl(data.link)} className="ml-10" >
+                Desc :- {data.title}
+                <title>{data.title}</title>
+                <a download="hi.mp4" target="_" href={"https://teradl.shraj.workers.dev/?url="+replaceUrl(data.resolutions['Fast Download'])} className="ml-10" >
                   <Button variant="outline">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
