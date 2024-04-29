@@ -67,7 +67,7 @@ export function VideoSearch() {
         <div className="max-w-3xl mx-auto text-center space-y-4">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Discover the best videos</h1>
           <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl">
-            Search, explore and download a vast collection of high-quality videos.
+            Search, explore and download a vast collection of high-quality videos. <Link href={"/visualsitemap"}>-/\-</Link>
           </p>
           <div className="flex items-center max-w-xl mx-auto" >
             <div className="relative flex-1">
