@@ -41,6 +41,7 @@ model Video {
   description String?
   author      Author      @relation(fields: [authorId], references: [id])
   authorId    Int    
+  user        String?
 }
 
 model Author {

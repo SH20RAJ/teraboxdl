@@ -1,6 +1,6 @@
 import prisma from "../../../../prisma";
 
-export async function Upload(id) {
+export async function Upload(id,user) {
   console.log(id);
   let slug = id;
   if (!(id.length == 23)){
@@ -35,6 +35,7 @@ export async function Upload(id) {
     data: {
       tera_id: id,
       authorId: 1,
+      user : user || null,
       // title,
       slug,
     },
