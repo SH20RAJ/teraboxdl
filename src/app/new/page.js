@@ -34,7 +34,8 @@ const fetcher = (url) => fetch(url).then((res) => res.json())
 
 export function VideoSearch() {
   const [query, setQuery] = useState('');
-  const { data, error } = useSWR('/api/feed', fetcher, { refreshInterval: 100 })
+  const { data, error } = useSWR('/api/feed', fetcher, { refreshInterval: 10000 })
+  const [videocount, setVideoCount] = useState('')
 
   useEffect(() => {
     let id = null;
@@ -54,6 +55,17 @@ export function VideoSearch() {
     }
   }, [query]);
 
+  useEffect( ()=>{
+
+    let videocount = async () => {
+      let data = await fetch("/api/totalvideos")
+      data = await data.json()
+      return data.count
+    } 
+    videocount = videocount()
+    setVideoCount(videocount)
+  },[])
+
   // if (error) return <div>Failed to load videos</div>
   // if (!data) return <SkeletonCard />
 
@@ -67,7 +79,7 @@ export function VideoSearch() {
         <div className="max-w-3xl mx-auto text-center space-y-4">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Discover the best videos</h1>
           <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl">
-            Search, explore and download a vast collection of high-quality videos. <Link href={"/visualsitemap"}>-/\-</Link>
+            Search, explore and download a vast collection of high-quality videos. <Link href={"/visualsitemap"}>-/\-</Link> - { videocount }+ Videos
           </p>
           <div className="flex items-center max-w-xl mx-auto" >
             <div className="relative flex-1">
