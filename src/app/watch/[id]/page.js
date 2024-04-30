@@ -15,7 +15,7 @@ export default async function page(req,res) {
     let data = await fetch(process.env.URL+'/api/yttera?id='+id);
     data = await data.json()
     data = data.response[0]
-    // let upload = await Upload(id)
+    let upload = await Upload(id)
   return (
     <>
     <Header/>
