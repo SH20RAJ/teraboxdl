@@ -2,6 +2,7 @@ import prisma from "../../../prisma"
 
 export default async function page() {
 
+    let videocount = await prisma.video.count({});
     let videos = await prisma.video.findMany({
         take: 10000,
         orderBy: {
