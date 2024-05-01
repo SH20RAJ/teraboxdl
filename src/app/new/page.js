@@ -58,7 +58,9 @@ export function VideoSearch() {
   useEffect( ()=>{
 
     let videocount = async () => {
-      let data = await fetch("/api/totalvideos")
+      let data = await fetch("/api/totalvideos",{
+        cache: "no-store"
+      })
       data = await data.json()
       return data.count
     } 

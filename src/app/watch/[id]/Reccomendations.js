@@ -27,6 +27,7 @@ export default function Reccomendations() {
 
 
     </div>
+<a href="https://visitorbadge.io/status?path=teradl" className='flex  justify-center '><img src="https://api.visitorbadge.io/api/combined?path=teradl&countColor=%232ccce4&style=flat-square&labelStyle=upper" /></a>
   </div>
   )
 }
