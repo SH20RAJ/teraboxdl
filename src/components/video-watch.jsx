@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
 import Link from "next/link";
 
-export function VideoWatch({ data }) {
+export function VideoWatch({ data, id }) {
   return (
         <div className="flex justify-center">
           <div className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden shadow-sm w-full">
@@ -52,6 +52,9 @@ export function VideoWatch({ data }) {
               </div> */}
                 Desc :- {data.title}
                 <title>{data.title}</title>
+                <span>
+<a href={"https://visitorbadge.io/status?path="+id}><img src={"https://api.visitorbadge.io/api/combined?path="+id+"&labelColor=%23f47373&countColor=%23d9e3f0&style=flat-square"} /></a>
+                </span>
                 <a download="hi.mp4" target="_" href={"https://teradl.shraj.workers.dev/?url="+replaceUrl(data.resolutions['Fast Download'])} className="ml-10" >
                   <Button variant="outline">
                     <svg

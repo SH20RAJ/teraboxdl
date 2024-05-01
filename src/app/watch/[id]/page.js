@@ -19,7 +19,7 @@ export default async function page(req,res) {
   return (
     <>
     <Header/>
-    <VideoWatch data={data}/>
+    <VideoWatch data={data} id={id}/>
     <Reccomendations/>
     </>
   )
