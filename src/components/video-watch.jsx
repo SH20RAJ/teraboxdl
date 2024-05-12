@@ -55,7 +55,7 @@ export function VideoWatch({ data, id }) {
                 <span className=" inline-block mx-6">
 <a href={"https://visitorbadge.io/status?path="+id}><img src={"https://api.visitorbadge.io/api/combined?path="+id+"&labelColor=%23f47373&countColor=%23d9e3f0&style=flat-square"} /></a>
                 </span>
-                <a download="hi.mp4" target="_" href={"https://teradl.shraj.workers.dev/?url="+replaceUrl(data.resolutions['HD Video'])} className="ml-10" >
+                <a download="hi.mp4" target="_blank" href={"https://teradl.shraj.workers.dev/?url="+replaceUrl(data.resolutions['HD Video'])} className="ml-10" >
                   <Button variant="outline">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ export function VideoWatch({ data, id }) {
                     </svg>
                   </Button>
                 </a>
-                <a download="hi.mp4" target="_" href={replaceUrl(data.resolutions['HD Video'])} className="ml-10" >
+                <a download="hi.mp4" rel="noopener noreferrer" target="_blank" href={replaceUrl(data.resolutions['HD Video'], 'data.terabox.app')} className="ml-10" >
                   {/* <Button variant="outline">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@ export function VideoWatch({ data, id }) {
                     </svg>
                   </Button> */} Slow Download
                 </a>
-                <a download="hi.mp4" target="_" href={replaceUrl(data.resolutions['HD Video'])} className="ml-10" >
+                <a download="hi.mp4" target="" href={replaceUrl(data.resolutions['HD Video'])} className="ml-10" >
                   {/* <Button variant="outline">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -181,10 +181,9 @@ function UserIcon(props) {
   );
 }
 
-export function replaceUrl(originalUrl) {
+export function replaceUrl(originalUrl , replacementDomain = "https://d8.freeterabox.com") {
   // Define the original and replacement domain
   const originalDomain = "https://d.terabox.app";
-  const replacementDomain = "https://d8.freeterabox.com";
 
   // Replace the domain in the URL
   const replacedUrl = originalUrl.replace(originalDomain, replacementDomain);
