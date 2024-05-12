@@ -29,7 +29,7 @@ export function VideoWatch({ data, id }) {
             <div className="relative aspect-video w-full max-h-[600px] min-h-[600px]">
               <video
                 className=" h-full"
-                src={ process.env.CFW && process.env.CFW +"?url=" + replaceUrl(data.resolutions['Fast Download']) || "/api/videos?url=" + replaceUrl(data.resolutions['Fast Download'])}
+                src={ process.env.CFW && process.env.CFW +"?url=" + replaceUrl(data.resolutions['HD Video']) || "/api/videos?url=" + replaceUrl(data.resolutions['HD Video'])}
                 controls
                 poster={data.thumbnail}
                 width={"100%"}
@@ -55,7 +55,7 @@ export function VideoWatch({ data, id }) {
                 <span className=" inline-block mx-6">
 <a href={"https://visitorbadge.io/status?path="+id}><img src={"https://api.visitorbadge.io/api/combined?path="+id+"&labelColor=%23f47373&countColor=%23d9e3f0&style=flat-square"} /></a>
                 </span>
-                <a download="hi.mp4" target="_" href={"https://teradl.shraj.workers.dev/?url="+replaceUrl(data.resolutions['Fast Download'])} className="ml-10" >
+                <a download="hi.mp4" target="_" href={"https://teradl.shraj.workers.dev/?url="+replaceUrl(data.resolutions['HD Video'])} className="ml-10" >
                   <Button variant="outline">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@ export function VideoWatch({ data, id }) {
                     </svg>
                   </Button> */} Slow Download
                 </a>
-                <a download="hi.mp4" target="_" href={replaceUrl(data.resolutions['Fast Download'])} className="ml-10" >
+                <a download="hi.mp4" target="_" href={replaceUrl(data.resolutions['HD Video'])} className="ml-10" >
                   {/* <Button variant="outline">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +108,7 @@ export function VideoWatch({ data, id }) {
                       />
                     </svg>
                   </Button> */}
-                  Fast Download
+                  HD Video
                 </a>
               </p>
               <div className="flex items-center justify-between">
