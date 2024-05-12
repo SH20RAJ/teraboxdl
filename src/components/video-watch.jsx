@@ -184,7 +184,7 @@ function UserIcon(props) {
 export function replaceUrl(originalUrl) {
   // Define the original and replacement domain
   const originalDomain = "https://d.terabox.app";
-  const replacementDomain = "https://d3.terabox.app";
+  const replacementDomain = "https://d8.freeterabox.com";
 
   // Replace the domain in the URL
   const replacedUrl = originalUrl.replace(originalDomain, replacementDomain);
