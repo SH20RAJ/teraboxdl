@@ -73,34 +73,9 @@ export function VideoSearch() {
   return (
     <>
       <div>
-        <Header />
+        <Header videocount={videocount} query={query} />
 
-        <div className="w-full bg-gray-100 dark:bg-gray-800 py-12 md:py-16 lg:py-24">
-          <div className="container px-4 md:px-6">
-            <div className="max-w-3xl mx-auto text-center space-y-4">
-              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                Discover the best videos
-              </h1>
-              <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl">
-                Search, explore and download a vast collection of high-quality
-                videos. <Link href={"/visualsitemap"}>-/\-</Link> - {videocount}
-                + Videos
-              </p>
-              <div className="flex items-center max-w-xl mx-auto">
-                <div className="relative flex-1">
-                  <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <Input
-                    className="w-full rounded-l-md border-0 py-2 pl-12 pr-4 text-gray-900 dark:bg-gray-950 dark:text-gray-50 focus:ring-2 focus:ring-gray-500"
-                    placeholder="Enter Terabox Link Here..."
-                    type="search"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
         <div className="container px-4 md:px-6 py-12 md:py-16 lg:py-24">
           <h2 className="text-2xl font-bold tracking-tight mb-8">
             Trending Videos

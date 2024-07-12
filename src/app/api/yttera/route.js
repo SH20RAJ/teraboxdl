@@ -1,6 +1,6 @@
 
 
-
+//app/api/yttera/route.js
 
 
 
@@ -12,9 +12,7 @@ export async function GET(req,res) {
   "headers": {
     "accept": "application/json, text/plain, */*",
     "accept-language": "en-US,en;q=0.9,hi;q=0.8",
-    "cache-control": "no-cache",
     "content-type": "application/json",
-    "pragma": "no-cache",
     "priority": "u=1, i",
     "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
     "sec-ch-ua-mobile": "?0",

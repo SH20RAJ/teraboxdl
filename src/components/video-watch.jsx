@@ -30,16 +30,16 @@ export function VideoWatch({ data, id }) {
                 <CalendarDaysIcon className="h-4 w-4 mr-2" />
                 <span>X months ago</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-300 mb-6">
+              <p className="text-gray-700 dark:text-gray-300 mb-6  gap-4 flex  flex-wrap">
                 {/* <div className="absolute bottom-4 left-4 text-white text-lg font-semibold">
                 {data.file_name}
               </div> */}
                 <title>{data.title}</title>
-                Desc :- {data.title}
+                <span>Desc :- {data.title}</span>
                 <span className=" inline-block mx-6">
 <a href={"https://visitorbadge.io/status?path="+id}><img src={"https://api.visitorbadge.io/api/combined?path="+id+"&labelColor=%23f47373&countColor=%23d9e3f0&style=flat-square"} /></a>
                 </span>
-                <a download="hi.mp4" target="_blank" href={"https://teradl.shraj.workers.dev/?url="+(data.resolutions['HD Video'])} className="ml-10" >
+                <a download="hi.mp4" target="_blank" href={"https://teradl.shraj.workers.dev/?url="+(data.resolutions['HD Video'])}  >
                   <Button variant="outline">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -57,41 +57,10 @@ export function VideoWatch({ data, id }) {
                     </svg>
                   </Button>
                 </a>
-                <a download="hi.mp4" rel="noopener noreferrer" target="_blank" href={data.resolutions['HD Video']} className="ml-10" >
-                  {/* <Button variant="outline">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
-                      />
-                    </svg>
-                  </Button> */} Slow Download
+                <a download="hi.mp4" rel="noopener noreferrer" target="_blank" href={data.resolutions['HD Video']}  >
+                  Slow Download
                 </a>
-                <a download="hi.mp4" target="" href={replaceUrl(data.resolutions['HD Video'])} className="ml-10" >
-                  {/* <Button variant="outline">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
-                      />
-                    </svg>
-                  </Button> */}
+                <a download="hi.mp4" target="" href={replaceUrl(data.resolutions['HD Video'])}  >
                   HD Video
                 </a>
                 <a href={"https://t.me/terasop_bot?start=https://teraboxapp.com/s/"+ id }>TeraSop Telegram Bot</a>
