@@ -73,7 +73,7 @@ export function VideoWatch({ data, id }) {
                     </svg>
                   </Button>
                 </a>
-                <a download="hi.mp4" rel="noopener noreferrer" target="_blank" href={replaceUrl(data.resolutions['HD Video'], 'data.terabox.app')} className="ml-10" >
+                <a download="hi.mp4" rel="noopener noreferrer" target="_blank" href={data.resolutions['HD Video']} className="ml-10" >
                   {/* <Button variant="outline">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
