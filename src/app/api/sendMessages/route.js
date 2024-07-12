@@ -1,78 +1,84 @@
+import prisma from "../../../../prisma";
+import TelegramBot from "node-telegram-bot-api";
 
-
-
-// app/api/sendMessages/route.js
-
-import { PrismaClient } from '@prisma/client';
-import TelegramBot from 'node-telegram-bot-api';
-
-const prisma = new PrismaClient();
 const token = process.env.TERASOP;
 const bot = new TelegramBot(token);
 const botlogger = "-1002221558664";
+const userid = 1479193538
 
-export const GET = async (req) => {
-  try {
-    console.log('Bot token:', token); // Check if the bot token is correctly loaded
+export const POST = async (req, res) => {
 
-    const MESSAGE_TEXT = 'Check the logs of @terasop_bot. Join here: https://t.me/+AXbG2ERsby8xZWM1';
-    const testChatId = 1479193538;
+  let response = await req.json();
 
-    // Test sending a message
-    await bot.sendMessage(testChatId, MESSAGE_TEXT);
-    await bot.sendMessage(botlogger, MESSAGE_TEXT);
+  let message = response.message;
+  
+  // get text from the request
+  // const { text } = { text: "Hello World!" };
+  // send the text to the bot
+  // bot.sendMessage(1479193538, text);
+  // return Response.json({ message: 'Message sent' });
 
-    return new Response(JSON.stringify({ message: 'Message sent successfully' }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  } catch (error) {
-    console.error('Error sending message:', error);
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
+  const MESSAGE_TEXT =
+    "Check the logs of @terasop_bot. Join here: https://t.me/+AXbG2ERsby8xZWM1";
+
+  const users = await prisma.video.findMany({
+    distinct: ["user"],
+    select: { user: true },
+  });
+  let successfullusers = [];
+  let failedusers = [];
+  users.forEach((user) => {
+    try {
+      bot.sendMessage(user.user, message || MESSAGE_TEXT);
+      console.log(`Message sent to user ${user.user}`);
+      successfullusers.push(user.user);
+
+    } catch (error) {
+      console.error(`Error sending message to user ${user.user}`);
+      failedusers.push(user.user);
+    }
+  });
+
+  bot.sendMessage(userid, message || MESSAGE_TEXT);
+
+  return Response.json({ message: "Messages sent", i:successfullusers.length , j : failedusers.length, successfullusers, failedusers});
 };
 
 
+export const TEST = async (req, res) => {
 
+  let response = await req.json();
 
+  let message = response.message;
+  
+  // get text from the request
+  // const { text } = { text: "Hello World!" };
+  // send the text to the bot
+  // bot.sendMessage(1479193538, text);
+  // return Response.json({ message: 'Message sent' });
 
+  const MESSAGE_TEXT =
+    "Check the logs of @terasop_bot. Join here: https://t.me/+AXbG2ERsby8xZWM1";
 
+  // const users = await prisma.video.findMany({
+  //   distinct: ["user"],
+  //   select: { user: true },
+  // });
+  let successfullusers = [];
+  let failedusers = [];
+  // users.forEach((user) => {
+  //   try {
+  //     bot.sendMessage(user.user, message || MESSAGE_TEXT);
+  //     console.log(`Message sent to user ${user.user}`);
+  //     successfullusers.push(user.user);
 
+  //   } catch (error) {
+  //     console.error(`Error sending message to user ${user.user}`);
+  //     failedusers.push(user.user);
+  //   }
+  // });
 
+  bot.sendMessage(userid, message || MESSAGE_TEXT);
 
-
-
-// import prisma from "../../../../prisma";
-// import TelegramBot from "node-telegram-bot-api";
-
-// const token = process.env.TERASOP;
-// const bot = new TelegramBot(token);
-// const botlogger = "-1002221558664"
-
-
-// export const GET = async (req, res) => {
-//   // get text from the request
-//   const { text } =  { text : "Hello World!"};
-//   // send the text to the bot
-//   bot.sendMessage(1479193538, text);
-//   return res.json({ message: 'Message sent' });
-
-//   const MESSAGE_TEXT = 'Check the logs of @terasop_bot. Join here: https://t.me/+AXbG2ERsby8xZWM1';
-
-//     // const users = await prisma.video.findMany({
-//     //     distinct: ['user'],
-//     //     select: { user: true },
-//     //   });
-
-//       // console.log(users[45]);
-//       // users.forEach((user) => {
-//       //   bot.sendMessage(user.user, MESSAGE_TEXT);
-//       // });
-//       let i = await bot.sendMessage("1479193538", MESSAGE_TEXT);
-
-
-//       return Response.json({ message: 'Messages sent', i});
-//     }
+  return Response.json({ message: "Messages sent", i:successfullusers.length , j : failedusers.length, successfullusers, failedusers});
+};
