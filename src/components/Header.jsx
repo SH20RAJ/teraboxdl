@@ -48,15 +48,38 @@ export function Header() {
   // if (error) return <div>Failed to load videos</div>
   // if (!data) return <SkeletonCard />
 
+  let links = [
+    {
+      name: "Privacy Policy",
+      slug: "/privacy",
+    },
+    {
+      name: "Terms of service",
+      slug: "/tos",
+    },
+    {
+      name: "About",
+      slug: "about",
+    },
+    {
+      name: "Contact",
+      slug: "/contact",
+    },
+    {
+      name: "DMCA",
+      slug: "/dmca",
+    },
+  ];
+
   return (
     <header className="bg-gray-900 text-white py-4 px-6 flex items-center justify-between">
       <div className="flex items-center gap-4">
         <Link className="flex items-center gap-2" href="/">
           <YoutubeIcon className="w-8 h-8 text-red-500" />
-          <span className="text-xl font-bold">TeraDl</span>
+          <span className="text-xl font-bold">TeraBox.tech</span>
         </Link>
         <form className="flex-1 max-w-md">
-          <div className="relative">
+          {/* <div className="relative">
             <Input
               className="bg-gray-800 text-white rounded-full pl-10 pr-4 py-2 w-full"
               placeholder="Search"
@@ -64,11 +87,11 @@ export function Header() {
               type="text"
             />
             <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          </div>
+          </div> */}
         </form>
       </div>
       <div className="flex items-center gap-4">
-        <Link href={"/new"}>
+        {/* <Link href={"/new"}>
           <Button size="icon" variant="ghost">
             <UploadIcon className="w-6 h-6" />
             <span className="sr-only">Upload</span>
@@ -111,7 +134,14 @@ export function Header() {
             <DropdownMenuItem>Help</DropdownMenuItem>
             <DropdownMenuItem>Sign out</DropdownMenuItem>
           </DropdownMenuContent>
-        </DropdownMenu>
+        </DropdownMenu> */}
+        <div className=" flex gap-4">
+          {links.map(({ name, slug }, j) => (
+            <Link key={j} href={slug}>
+              {name}{" "}
+            </Link>
+          ))}
+        </div>
       </div>
     </header>
   );
