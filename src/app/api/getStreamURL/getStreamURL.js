@@ -36,7 +36,7 @@ let options = await getOptions(id);
   };
 
   const encryptedData = encrypt(JSON.stringify(streamData));
-  const streamUrl = `https://terabox-downloader-api-71h9.onrender.com/stream.m3u8?data=${encryptedData}`;
+  const streamUrl = `https://terabox-downloader-api-src.onrender.com/stream.m3u8?data=${encryptedData}`;
   
   return streamUrl;
 }
