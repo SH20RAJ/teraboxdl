@@ -14,7 +14,7 @@ export const metadata = {
     title: "Terabox.tech Player, Embed, Download Terabox videos",
     description: "Watch, Embed and download terabox Videos | 100% working | Download Terabox videos with TeraDL",
     type: "website",
-    images: ["./og.png"],
+    images: "./og.png",
     url: "https://terabox.tech",
     siteName: "Terabox.tech",
   },
@@ -22,7 +22,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Terabox.tech Player, Embed, Download Terabox videos",
     description: "Watch, Embed and download terabox Videos | 100% working | Download Terabox videos with TeraDL",
-    images: ["./og.png"],
+    images: "./og.png",
     site: "@microsoft",
   },
 };
