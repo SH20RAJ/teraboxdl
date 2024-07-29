@@ -89,30 +89,14 @@ const Downloader = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-gray-800 p-6">
-      <Head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="description"
-          content="Terabox Downloader - 100% working solution to download videos from Terabox easily."
-        />
-        <meta
-          name="keywords"
-          content="Terabox, Terabox Downloader, Video Downloader, Download Terabox videos"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="Shashwat Raj" />
-        <title>
-          Terabox Downloader | 100% working | Download Terabox videos
-        </title>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         />
-      </Head>
       <h1 className="text-4xl font-bold text-blue-600 mb-6 text-center">
-        Terabox Downloader | 100% working | Download Terabox videos
+      Terabox.tech Player, Embed, Download Terabox videos
       </h1>
+      
       <input
         id="input-url"
         placeholder="Enter Terabox URL"
