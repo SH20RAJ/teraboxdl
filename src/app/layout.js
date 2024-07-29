@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Terabox.tech Player, Embed, Download Terabox videos",
   description: "Watch, Embed and download terabox Videos | 100% working | Download Terabox videos with TeraDL",
-  keywords: "terabox, downloader, videos",
-  author: "Your Name",
+  keywords: "terabox, terabox direct download, terabox downloader, terabox online downloader, terabox player, terabox online player, terabox links, terabox link converter, terabox direct link, terabox direct videos, terabox direct files, terabox bypass, terabox link bypass, terabox video downloader, terabox video download, terabox link downloader, terabox downloader online",
+  author: "Terabox.tech",
   robots: "index, follow",
   ogTitle: "Terabox.tech Player, Embed, Download Terabox videos",
   ogDescription: "Watch, Embed and download terabox Videos | 100% working | Download Terabox videos with TeraDL",
