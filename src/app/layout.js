@@ -4,25 +4,27 @@ import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata = {
   title: "Terabox.tech Player, Embed, Download Terabox videos",
   description: "Watch, Embed and download terabox Videos | 100% working | Download Terabox videos with TeraDL",
-  keywords: "terabox, terabox direct download, terabox downloader, terabox online downloader, terabox player, terabox online player, terabox links, terabox link converter, terabox direct link, terabox direct videos, terabox direct files, terabox bypass, terabox link bypass, terabox video downloader, terabox video download, terabox link downloader, terabox downloader online",
-  author: "Terabox.tech",
+  keywords: ["terabox", "terabox direct download", "terabox downloader", "terabox online downloader", "terabox player", "terabox online player", "terabox links", "terabox link converter", "terabox direct link", "terabox direct videos", "terabox direct files", "terabox bypass", "terabox link bypass", "terabox video downloader", "terabox video download", "terabox link downloader", "terabox downloader online"],
+  authors: [{ name: "Terabox.tech" }],
   robots: "index, follow",
-  ogTitle: "Terabox.tech Player, Embed, Download Terabox videos",
-  ogDescription: "Watch, Embed and download terabox Videos | 100% working | Download Terabox videos with TeraDL",
-  ogType: "website",
-  ogImage: "./og.png",
-  twitterTitle: "Terabox.tech Player, Embed, Download Terabox videos",
-  twitterDescription: "Watch, Embed and download terabox Videos | 100% working | Download Terabox videos with TeraDL",
-  twitterImage: "./og.png",
-  // Additional SEO tags
-  ogUrl: "https://terabox.tech",
-  ogSiteName: "Terabox.tech",
-  twitterCard: "summary_large_image",
-  twitterSite: "@microsoft",
+  openGraph: {
+    title: "Terabox.tech Player, Embed, Download Terabox videos",
+    description: "Watch, Embed and download terabox Videos | 100% working | Download Terabox videos with TeraDL",
+    type: "website",
+    images: ["./og.png"],
+    url: "https://terabox.tech",
+    siteName: "Terabox.tech",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terabox.tech Player, Embed, Download Terabox videos",
+    description: "Watch, Embed and download terabox Videos | 100% working | Download Terabox videos with TeraDL",
+    images: ["./og.png"],
+    site: "@microsoft",
+  },
 };
 
 let analytics = `
@@ -41,6 +43,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="dark">
       <head>
         <link rel="icon" href="/favicon.ico" />
+
         <div className="analytics">
           <div dangerouslySetInnerHTML={{__html: analytics}}></div>
         </div>
