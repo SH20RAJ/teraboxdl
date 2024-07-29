@@ -2,16 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import { usePathname } from 'next/navigation'
-
+import { usePathname } from 'next/navigation';
 
 const Downloader = () => {
-  
   const [inputUrl, setInputUrl] = useState("");
   const [videoDetails, setVideoDetails] = useState(null);
   const [videoContainerVisible, setVideoContainerVisible] = useState(false);
 
-  const pathname  = usePathname()
+  const pathname = usePathname();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -72,8 +70,6 @@ const Downloader = () => {
         console.error("Error copying share link:", err);
       });
   };
-
-
 
   const copyEmbedCode = () => {
     const embedCode = `<iframe src="${window.location.origin}/play.html?url=${encodeURIComponent(
@@ -141,7 +137,7 @@ const Downloader = () => {
           <h3 className="text-xl font-semibold text-blue-600 mb-2">Embed Link</h3>
           <input
             type="text"
-            value={`<iframe src="${ pathname }/play.html?url=${encodeURIComponent(
+            value={`<iframe src="${"https://www.terabox.tech"}/play.html?url=${encodeURIComponent(
               inputUrl
             )}" width="700px" height="600px" frameborder="0"></iframe>`}
             className="p-3 w-full border border-gray-300 rounded mb-4"
