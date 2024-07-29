@@ -55,9 +55,9 @@ const Downloader = () => {
   };
 
   const copyShareLink = () => {
-    const shareUrl = `${window.location.origin}${
-      window.location.pathname
-    }?url=${encodeURIComponent(inputUrl)}`;
+    const shareUrl = `${window.location.origin}${window.location.pathname}?url=${encodeURIComponent(
+      inputUrl
+    )}`;
     navigator.clipboard
       .writeText(shareUrl)
       .then(() => {
@@ -68,17 +68,24 @@ const Downloader = () => {
       });
   };
 
-  const goBack = () => {
-    setInputUrl("");
-    setVideoContainerVisible(false);
-    setVideoDetails(null);
-    window.history.pushState(null, null, window.location.pathname);
+  const copyEmbedCode = () => {
+    const embedCode = `<iframe src="${window.location.origin}/play.html?url=${encodeURIComponent(
+      inputUrl
+    )}" width="700px" height="600px" frameborder="0"></iframe>`;
+    navigator.clipboard
+      .writeText(embedCode)
+      .then(() => {
+        alert("Embed code copied to clipboard");
+      })
+      .catch((err) => {
+        console.error("Error copying embed code:", err);
+      });
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-primary-foreground text-fuchsia-400 p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-gray-800 p-6">
       <Head>
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
@@ -98,7 +105,7 @@ const Downloader = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         />
       </Head>
-      <h1 className="text-4xl font-bold text-primary mb-6">
+      <h1 className="text-4xl font-bold text-blue-600 mb-6 text-center">
         Terabox Downloader | 100% working | Download Terabox videos
       </h1>
       <input
@@ -107,83 +114,49 @@ const Downloader = () => {
         type="text"
         value={inputUrl}
         onChange={(e) => setInputUrl(e.target.value)}
-        className="p-3 w-4/5 max-w-md border border-gray-300 rounded mb-4"
+        className="p-3 w-full max-w-lg border border-gray-300 rounded mb-4"
       />
       <button
         onClick={() => fetchVideoDetails(inputUrl)}
-        className="p-3 bg-blue-600 text-white rounded hover:bg-blue-500 mb-2"
+        className="p-3 bg-blue-600 text-white rounded hover:bg-blue-500 mb-2 w-full max-w-lg"
       >
         Fetch Video
       </button>
-      {/* <button onClick={goBack} className="p-3 bg-red-600 text-white rounded hover:bg-red-500">Go Back</button> */}
-      <div className="embedder w-full flex flex-col justify-center items-center">
+      <div className="embedder w-full flex flex-col justify-center items-center mt-4">
         <iframe
-          onContextMenu={(e) => alert(e)}
+          onContextMenu={(e) => e.preventDefault()}
           id="iframe"
-          className="w-1/2 h-[600px] border-0 mb-4"
+          className="w-full max-w-3xl h-[600px] border-0 mb-4"
           src={`/play.html?url=${encodeURIComponent(inputUrl)}`}
           allowFullScreen
         />
-        {/* Show copy Embed link with code */}
-        <div>
-          <h3 className="text-xl font-semibold text-primary mb-2">
-            Embed Link
-          </h3>
+        <div className="w-full max-w-3xl">
+          <h3 className="text-xl font-semibold text-blue-600 mb-2">Embed Link</h3>
           <input
             type="text"
-            value={`<iframe src="${
-              window.location.origin
-            }/play.html?url=${encodeURIComponent(
+            value={`<iframe src="${window.location.origin}/play.html?url=${encodeURIComponent(
               inputUrl
             )}" width="700px" height="600px" frameborder="0"></iframe>`}
-            className="p-3 w-4/5 max-w-md border border-gray-300 rounded mb-4"
+            className="p-3 w-full border border-gray-300 rounded mb-4"
+            readOnly
           />
+          <button
+            className="p-3 bg-green-600 text-white rounded hover:bg-green-500 w-full"
+            onClick={copyEmbedCode}
+          >
+            Copy Embed Code
+          </button>
         </div>
-        {/* Copy embed code button */}
-        <button
-          className="p-3 bg-green-600 text-white rounded hover:bg-green-500"
-          onClick={() => {
-            navigator.clipboard
-              .writeText(
-                `<iframe src="${
-                  window.location.origin
-                }/play.html?url=${encodeURIComponent(
-                  inputUrl
-                )}" width="700px" height="600px" frameborder="0"></iframe>`
-              )
-              .then(() => {
-                alert("Embed code copied to clipboard");
-              })
-              .catch((err) => {
-                console.error("Error copying embed code:", err);
-              });
-          }}
-        >
-          Copy Embed Code
-        </button>
       </div>
       {videoContainerVisible && videoDetails && (
-        <div
-          id="video-container"
-          className="flex flex-col items-center mt-8 w-full"
-        >
-          <h2
-            id="video-title"
-            className="text-2xl font-semibold text-primary mb-4"
-          >
+        <div id="video-container" className="flex flex-col items-center mt-8 w-full max-w-3xl">
+          <h2 id="video-title" className="text-2xl font-semibold text-blue-600 mb-4 text-center">
             {videoDetails.title}
           </h2>
-          <iframe
-            onContextMenu={(e) => alert(e)}
-            id="iframe"
-            className="w-1/2 h-[600px] border-0 mb-4"
-            src={`/play.html?url=${encodeURIComponent(inputUrl)}`}
-            allowFullScreen
-          />
           <video
             controls
             id="video"
-            className="w-4/5 max-w-lg border border-gray-300 rounded mb-4"
+            className="w-full max-w-3xl border border-gray-300 rounded mb-4"
             src={`https://teradl.shraj.workers.dev/?url=${encodeURIComponent(
               videoDetails.resolutions["Fast Download"]
             )}`}
@@ -209,10 +182,8 @@ const Downloader = () => {
               Watch Link
             </button>
           </div>
-          <div className="text-center mb-4">
-            <h3 className="text-xl font-semibold text-primary mb-2">
-              Download Links
-            </h3>
+          <div className="text-center mb-4 w-full">
+            <h3 className="text-xl font-semibold text-blue-600 mb-2">Download Links</h3>
             <a
               href={videoDetails.resolutions["Fast Download"]}
               id="fast-download"
@@ -231,9 +202,7 @@ const Downloader = () => {
             >
               HD Video
             </a>
-            <h3 className="text-xl font-semibold text-primary mb-2">
-              Watch Link
-            </h3>
+            <h3 className="text-xl font-semibold text-blue-600 mb-2">Watch Link</h3>
             <a
               href={`https://teradl.shraj.workers.dev/?url=${videoDetails.resolutions["Fast Download"]}`}
               id="watch-link"
@@ -243,9 +212,7 @@ const Downloader = () => {
             >
               Watch Here
             </a>
-            <h3 className="text-xl font-semibold text-primary mb-2">
-              Thumbnail
-            </h3>
+            <h3 className="text-xl font-semibold text-blue-600 mb-2">Thumbnail</h3>
             <a
               href={videoDetails.thumbnail}
               id="thumbnail-link"
@@ -257,7 +224,7 @@ const Downloader = () => {
           </div>
           <button
             id="share-link"
-            className="p-3 bg-green-600 text-white rounded hover:bg-green-500"
+            className="p-3 bg-green-600 text-white rounded hover:bg-green-500 w-full max-w-lg"
             onClick={copyShareLink}
           >
             Copy Share Link
