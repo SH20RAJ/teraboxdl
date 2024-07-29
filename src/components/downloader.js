@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 
 const Downloader = () => {
   const [inputUrl, setInputUrl] = useState("");
@@ -58,9 +58,9 @@ const Downloader = () => {
   };
 
   const copyShareLink = () => {
-    const shareUrl = `${window.location.origin}${window.location.pathname}?url=${encodeURIComponent(
-      inputUrl
-    )}`;
+    const shareUrl = `${window.location.origin}${
+      window.location.pathname
+    }?url=${encodeURIComponent(inputUrl)}`;
     navigator.clipboard
       .writeText(shareUrl)
       .then(() => {
@@ -72,7 +72,9 @@ const Downloader = () => {
   };
 
   const copyEmbedCode = () => {
-    const embedCode = `<iframe src="${window.location.origin}/play.html?url=${encodeURIComponent(
+    const embedCode = `<iframe src="${
+      window.location.origin
+    }/play.html?url=${encodeURIComponent(
       inputUrl
     )}" width="700px" height="600px" frameborder="0"></iframe>`;
     navigator.clipboard
@@ -134,7 +136,9 @@ const Downloader = () => {
           allowFullScreen
         />
         <div className="w-full max-w-3xl">
-          <h3 className="text-xl font-semibold text-blue-600 mb-2">Embed Link</h3>
+          <h3 className="text-xl font-semibold text-blue-600 mb-2">
+            Embed Link
+          </h3>
           <input
             type="text"
             value={`<iframe src="${"https://www.terabox.tech"}/play.html?url=${encodeURIComponent(
@@ -152,8 +156,14 @@ const Downloader = () => {
         </div>
       </div>
       {videoContainerVisible && videoDetails && (
-        <div id="video-container" className="flex flex-col items-center mt-8 w-full max-w-3xl">
-          <h2 id="video-title" className="text-2xl font-semibold text-blue-600 mb-4 text-center">
+        <div
+          id="video-container"
+          className="flex flex-col items-center mt-8 w-full max-w-3xl"
+        >
+          <h2
+            id="video-title"
+            className="text-2xl font-semibold text-blue-600 mb-4 text-center"
+          >
             {videoDetails.title}
           </h2>
           <video
@@ -186,7 +196,9 @@ const Downloader = () => {
             </button>
           </div>
           <div className="text-center mb-4 w-full">
-            <h3 className="text-xl font-semibold text-blue-600 mb-2">Download Links</h3>
+            <h3 className="text-xl font-semibold text-blue-600 mb-2">
+              Download Links
+            </h3>
             <a
               href={videoDetails.resolutions["Fast Download"]}
               id="fast-download"
@@ -205,7 +217,9 @@ const Downloader = () => {
             >
               HD Video
             </a>
-            <h3 className="text-xl font-semibold text-blue-600 mb-2">Watch Link</h3>
+            <h3 className="text-xl font-semibold text-blue-600 mb-2">
+              Watch Link
+            </h3>
             <a
               href={`https://teradl.shraj.workers.dev/?url=${videoDetails.resolutions["Fast Download"]}`}
               id="watch-link"
@@ -215,7 +229,9 @@ const Downloader = () => {
             >
               Watch Here
             </a>
-            <h3 className="text-xl font-semibold text-blue-600 mb-2">Thumbnail</h3>
+            <h3 className="text-xl font-semibold text-blue-600 mb-2">
+              Thumbnail
+            </h3>
             <a
               href={videoDetails.thumbnail}
               id="thumbnail-link"
@@ -234,6 +250,10 @@ const Downloader = () => {
           </button>
         </div>
       )}
+
+      <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fwww.terabox.tech">
+        <img src="https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fwww.terabox.tech&countColor=%23263759&style=plastic" />
+      </a>
     </div>
   );
 };
