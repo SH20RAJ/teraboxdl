@@ -1,8 +1,6 @@
-import { VideoFeeds } from "@/components/video-feeds";
-import Image from "next/image";
-import New from "./new/page";
 import Downloader from "@/components/downloader";
 import { Header } from "@/components/Header";
+import SrOnly from "@/components/SrOnly";
 
 export default function Home() {
   return (
@@ -10,6 +8,7 @@ export default function Home() {
     {/* <New/> */}
     <Header/>
     <Downloader/>
+    <SrOnly/>
     </>
   );
 }
