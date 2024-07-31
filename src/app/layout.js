@@ -38,6 +38,26 @@ let analytics = `
   gtag('config', 'G-12EDBKJZQ3');
 </script>`;
 
+const jsonld = `
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Terabox.tech",
+  "url": "https://terabox.tech",
+  "description": "Watch, Embed and download Terabox Videos 🔥 100% working ✅ Download Terabox videos with TeraDL",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Terabox.tech"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "100"
+  }
+}
+</script>`;
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
@@ -48,6 +68,7 @@ export default function RootLayout({ children }) {
           <div dangerouslySetInnerHTML={{__html: analytics}}></div>
         </div>
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1828915420581549" crossorigin="anonymous"></Script>
+        <div dangerouslySetInnerHTML={{ __html: jsonld }}></div>
       </head>
       <body className={inter.className}>{children}</body>
       <Analytics/>
