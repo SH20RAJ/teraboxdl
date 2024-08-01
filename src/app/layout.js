@@ -60,6 +60,8 @@ const jsonld = `
 
 export default function RootLayout({ children }) {
   postToIndexNow();
+  postToIndexNow2()
+  postToIndexNow3()
   return (
     <html lang="en" className="dark">
       <head>
@@ -88,6 +90,72 @@ async function postToIndexNow() {
       "https://www.terabox.tech/",
       "https://www.terabox.tech/about",
       "https://www.terabox.tech/contact",
+    ]
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log('Success:', result);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+async function postToIndexNow2() {
+  const url = 'https://api.indexnow.org/IndexNow';
+  const data = {
+    "host": "terabox.tech",
+    "key": "67b1059e89d04c82981cbee130ae538f",
+    "keyLocation": "https://terabox.tech/67b1059e89d04c82981cbee130ae538f.txt",
+    "urlList": [
+      "https://terabox.tech/",
+      "https://terabox.tech/about",
+      "https://terabox.tech/contact",
+    ]
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log('Success:', result);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+async function postToIndexNow3() {
+  const url = 'https://api.indexnow.org/IndexNow';
+  const data = {
+    "host": "devart.terabox.tech",
+    "key": "67b1059e89d04c82981cbee130ae538f",
+    "keyLocation": "https://devart.terabox.tech/67b1059e89d04c82981cbee130ae538f.txt",
+    "urlList": [
+      "https://devart.terabox.tech/",
+      "https://devart.terabox.tech/devteam/top-7-featured-dev-posts-of-the-week-2751",
+      "https://devart.terabox.tech/debapriyadas/cloning-and-running-llama-31-model-from-hugging-face-using-python-3m80"
     ]
   };
 
