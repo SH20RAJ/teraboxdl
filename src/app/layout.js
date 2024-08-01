@@ -59,6 +59,7 @@ const jsonld = `
 </script>`;
 
 export default function RootLayout({ children }) {
+  postToIndexNow();
   return (
     <html lang="en" className="dark">
       <head>
@@ -74,4 +75,38 @@ export default function RootLayout({ children }) {
       <Analytics/>
     </html>
   );
+}
+
+
+async function postToIndexNow() {
+  const url = 'https://api.indexnow.org/IndexNow';
+  const data = {
+    "host": "www.terabox.tech",
+    "key": "67b1059e89d04c82981cbee130ae538f",
+    "keyLocation": "https://www.terabox.tech/67b1059e89d04c82981cbee130ae538f.txt",
+    "urlList": [
+      "https://www.terabox.tech/",
+      "https://www.terabox.tech/about",
+      "https://www.terabox.tech/contact",
+    ]
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log('Success:', result);
+  } catch (error) {
+    console.error('Error:', error);
+  }
 }
