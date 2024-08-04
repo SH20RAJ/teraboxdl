@@ -89,14 +89,14 @@ const Downloader = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-gray-800 p-6">
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      />
       <h1 className="text-4xl font-bold text-blue-600 mb-6 text-center">
-      Terabox.tech Player, Embed, Download Terabox videos
+        Terabox.tech Player, Embed, Download Terabox videos
       </h1>
-      
+
       <input
         id="input-url"
         placeholder="Enter Terabox URL"
@@ -115,7 +115,7 @@ const Downloader = () => {
         <iframe
           onContextMenu={(e) => e.preventDefault()}
           id="iframe"
-          className="w-full max-w-3xl h-[600px] border-0 mb-4"
+          className={ inputUrl && "w-full max-w-3xl h-[600px] border-0 mb-4"}
           src={`/play.html?url=${encodeURIComponent(inputUrl)}`}
           allowFullScreen
         />
@@ -137,6 +137,12 @@ const Downloader = () => {
           >
             Copy Embed Code
           </button>
+          <a
+            className="p-3 my-2 block text-center bg-green-100 text-black rounded hover:bg-green-500 w-full"
+            href="https://t.me/terasop_bot?start=2"
+          >
+            Telegram Bot
+          </a>
         </div>
       </div>
       {videoContainerVisible && videoDetails && (

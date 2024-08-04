@@ -11,7 +11,7 @@ export default function Home() {
       <Downloader />
       <SrOnly />
       {/* download chrome extension */}
-      <div className="flex flex-col items-center justify-center h-screen bg-gray-700">
+      <div className="hidden lg:flex flex-col items-center justify-center min-h-screen bg-gray-700">
         <h1 className="text-3xl font-bold mb-6">
           Download TeraBox Player Chrome Extension
         </h1>
