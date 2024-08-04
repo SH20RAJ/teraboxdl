@@ -45,7 +45,13 @@
   ],
   "splash_pages": null,
   "screenshots": [
-    
+    {
+      "src": "/screenshots/s1.jpeg",
+      "sizes": "574x1280",
+      "type": "image/jpg",
+      "form_factor": "wide"
+    },
+
     {
       "src": "/screenshots/s1.jpeg",
       "sizes": "574x1280",
@@ -72,5 +78,4 @@
       "type": "image/jpg"
     }
   ]
-
 }
