@@ -2,34 +2,36 @@ import Link from "next/link";
 
 
 
+export let links = [
+  {
+    name: "Privacy Policy",
+    slug: "/privacy",
+  },
+  {
+    name: "Terms of service",
+    slug: "/tos",
+  },
+  {
+    name: "About",
+    slug: "about",
+  },
+  {
+    name: "Contact",
+    slug: "/contact",
+  },
+  {
+    name: "DMCA",
+    slug: "/dmca",
+  },
+];
+
 export function Header() {
 
 
   // if (error) return <div>Failed to load videos</div>
   // if (!data) return <SkeletonCard />
 
-  let links = [
-    {
-      name: "Privacy Policy",
-      slug: "/privacy",
-    },
-    {
-      name: "Terms of service",
-      slug: "/tos",
-    },
-    {
-      name: "About",
-      slug: "about",
-    },
-    {
-      name: "Contact",
-      slug: "/contact",
-    },
-    {
-      name: "DMCA",
-      slug: "/dmca",
-    },
-  ];
+  
 
   return (
     <header className="bg-gray-900 text-white py-4 px-6 flex items-center justify-between">
@@ -95,7 +97,7 @@ export function Header() {
             <DropdownMenuItem>Sign out</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu> */}
-        <div className=" flex gap-4">
+        <div className="gap-4 hidden lg:flex ">
           {links.map(({ name, slug }, j) => (
             <Link key={j} href={slug}>
               {name}{" "}
