@@ -61,6 +61,13 @@ export default function Home() {
         >
           Open Telegram Bot
         </a>
+        <a
+          href="https://www.youtube.com/watch?v=ynPuiFzotAQ"
+          className="mt-8 bg-purple-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-purple-600 transition-colors"
+        >
+          Demo Video (How to Install)
+        </a>
+
       </div>
 
       <div className="gap-4 hidden lg:flex ">
