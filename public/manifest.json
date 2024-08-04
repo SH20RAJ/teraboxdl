@@ -45,16 +45,30 @@
   ],
   "splash_pages": null,
   "screenshots": [
+    
     {
-      "src": "https://cdn.statically.io/og/Terabox.tech.jpg",
-      "sizes": "2048x1170",
-      "type": "image/jpg",
-      "form_factor": "wide"
-
+      "src": "/screenshots/s1.jpeg",
+      "sizes": "574x1280",
+      "type": "image/jpg"
     },
     {
-      "src": "/icons/android-chrome-512x512.png",
-      "sizes": "512x512",
+      "src": "/screenshots/s2.jpeg",
+      "sizes": "574x1280",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/screenshots/s3.jpeg",
+      "sizes": "574x1280",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/screenshots/s4.jpeg",
+      "sizes": "574x1280",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/screenshots/s5.jpeg",
+      "sizes": "574x1280",
       "type": "image/jpg"
     }
   ]
