@@ -34,7 +34,7 @@
     },
     {
       "src": "/icons/mstile-150x150.png",
-      "sizes": "150x150",
+      "sizes": "270x270",
       "type": "image/png"
     },
     {
@@ -42,5 +42,21 @@
       "sizes": "any",
       "type": "image/svg+xml"
     }
+  ],
+  "splash_pages": null,
+  "screenshots": [
+    {
+      "src": "https://cdn.statically.io/og/Terabox.tech.jpg",
+      "sizes": "2048x1170",
+      "type": "image/jpg",
+      "form_factor": "wide"
+
+    },
+    {
+      "src": "/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
   ]
+
 }
