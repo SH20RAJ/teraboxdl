@@ -1,49 +1,9 @@
-"use client";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
-import {
-  DropdownMenuTrigger,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuContent,
-  DropdownMenu,
-} from "@/components/ui/dropdown-menu";
-import {
-  ContextMenuTrigger,
-  ContextMenuItem,
-  ContextMenuContent,
-  ContextMenu,
-} from "@/components/ui/context-menu";
-import { useEffect, useState } from "react";
-import useSWR from "swr";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+
 
 export function Header() {
-  const [query, setQuery] = useState("");
-  const { data, error } = useSWR("/api/feed", fetcher, {
-    refreshInterval: 100000,
-  });
 
-  useEffect(() => {
-    let id = null;
-
-    // Check if the URL is from teraboxapp.com
-    if (query.includes("teraboxapp.com/s/")) {
-      id = query.split("teraboxapp.com/s/")[1];
-    }
-    // Check if the URL is from 1024tera.com
-    else if (query.includes("1024tera.com/sharing/link?surl=")) {
-      id = query.split("1024tera.com/sharing/link?surl=")[1];
-    }
-
-    // If an ID was found, redirect to the /watch/{id} page
-    if (id) {
-      window.location.href = `/watch/${id}`;
-    }
-  }, [query]);
 
   // if (error) return <div>Failed to load videos</div>
   // if (!data) return <SkeletonCard />
