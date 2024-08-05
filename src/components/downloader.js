@@ -1,30 +1,28 @@
-"use client";
+"use client"; // Use this directive to enable client-side features
 
 import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const Downloader = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [inputUrl, setInputUrl] = useState("");
 
   useEffect(() => {
     // Check URL parameters on client side
-    if (typeof window !== "undefined") {
-      const urlParams = new URLSearchParams(window.location.search);
-      const url = urlParams.get("url");
-      if (url) {
-        setInputUrl(decodeURIComponent(url)); // Decode the URL parameter
-      }
+    const url = searchParams.get("url");
+    if (url) {
+      setInputUrl(decodeURIComponent(url)); // Decode the URL parameter
     }
-  }, []);
+  }, [searchParams]);
 
   const handleUrlChange = (e) => {
     const url = e.target.value;
     if (isValidUrl(url)) {
       setInputUrl(url);
       // Update the URL with the input URL parameter
-      if (typeof window !== "undefined") {
-        const newUrl = `${window.location.pathname}?url=${encodeURIComponent(url)}`;
-        window.history.replaceState({}, '', newUrl);
-      }
+      const newUrl = `${window.location.pathname}?url=${encodeURIComponent(url)}`;
+      router.push(newUrl);
     } else {
       alert("Please enter a valid URL.");
     }
@@ -92,9 +90,7 @@ const Downloader = () => {
           />
         )}
         <div className="w-full max-w-3xl mt-4">
-          <h3 className="text-2xl font-semibold  mb-2">
-            Embed Link
-          </h3>
+          <h3 className="text-2xl font-semibold mb-2">Embed Link</h3>
           <input
             type="text"
             value={`<iframe src="${window.location.origin}/play.html?url=${encodeURIComponent(
