@@ -11,7 +11,7 @@ export let links = [
 
 export function Header() {
   return (
-    <header className="bg-gray-900 text-white py-4 px-6 flex items-center justify-between shadow-lg">
+    <header className="bg-gray-950 text-white py-4 px-6 flex items-center justify-between shadow-lg">
       <div className="flex items-center gap-6">
         <Link className="flex items-center gap-2" href="/">
           <YoutubeIcon className="w-8 h-8 text-red-500" />

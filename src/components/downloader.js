@@ -6,18 +6,46 @@ const Downloader = () => {
   const [inputUrl, setInputUrl] = useState("");
 
   useEffect(() => {
-    // Extract URL parameter from the query string
-    const urlParams = new URLSearchParams(window.location.search);
-    const url = urlParams.get("url");
-    if (url) {
-      setInputUrl(decodeURIComponent(url)); // Decode the URL parameter
+    // Check URL parameters on client side
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const url = urlParams.get("url");
+      if (url) {
+        setInputUrl(decodeURIComponent(url)); // Decode the URL parameter
+      }
     }
   }, []);
+
+  const handleUrlChange = (e) => {
+    const url = e.target.value;
+    if (isValidUrl(url)) {
+      setInputUrl(url);
+      // Update the URL with the input URL parameter
+      if (typeof window !== "undefined") {
+        const newUrl = `${window.location.pathname}?url=${encodeURIComponent(url)}`;
+        window.history.replaceState({}, '', newUrl);
+      }
+    } else {
+      alert("Please enter a valid URL.");
+    }
+  };
+
+  const copyShareLink = () => {
+    const currentUrl = `${window.location.origin}${window.location.pathname}?url=${encodeURIComponent(inputUrl)}`;
+    navigator.clipboard
+      .writeText(currentUrl)
+      .then(() => {
+        alert("Share link copied to clipboard");
+      })
+      .catch((err) => {
+        console.error("Error copying share link:", err);
+      });
+  };
 
   const copyEmbedCode = () => {
     const embedCode = `<iframe src="${window.location.origin}/play.html?url=${encodeURIComponent(
       inputUrl
-    )}" width="700px" height="600px" frameborder="0" allowfullscreen scrolling="none"></iframe>`;
+    )}" width="700px" height="600px" frameborder="0" allowfullscreen scrolling="no"></iframe>`;
     navigator.clipboard
       .writeText(embedCode)
       .then(() => {
@@ -26,6 +54,15 @@ const Downloader = () => {
       .catch((err) => {
         console.error("Error copying embed code:", err);
       });
+  };
+
+  const isValidUrl = (url) => {
+    try {
+      new URL(url);
+      return true;
+    } catch (_) {
+      return false;
+    }
   };
 
   return (
@@ -39,11 +76,11 @@ const Downloader = () => {
         placeholder="Enter Terabox URL"
         type="text"
         value={inputUrl}
-        onChange={(e) => setInputUrl(e.target.value)}
+        onChange={handleUrlChange}
         className="p-4 w-full max-w-md border border-gray-300 rounded-lg mb-4 shadow-lg text-gray-800"
       />
 
-      <div className="embedder w-full flex flex-col justify-center items-center mt-4 bg-white p-6 rounded-lg shadow-lg">
+      <div className="embedder w-full flex flex-col justify-center items-center mt-4 p-6 rounded-lg shadow-lg">
         {inputUrl && (
           <iframe
             onContextMenu={(e) => e.preventDefault()}
@@ -51,11 +88,11 @@ const Downloader = () => {
             className="w-full max-w-3xl h-[600px] border-0 mb-4 rounded-lg shadow-lg"
             src={`/play.html?url=${encodeURIComponent(inputUrl)}`}
             allowFullScreen
-            scrolling="none"
+            scrolling="no"
           />
         )}
         <div className="w-full max-w-3xl mt-4">
-          <h3 className="text-2xl font-semibold text-blue-600 mb-2">
+          <h3 className="text-2xl font-semibold  mb-2">
             Embed Link
           </h3>
           <input
@@ -72,12 +109,12 @@ const Downloader = () => {
           >
             Copy Embed Code
           </button>
-          <a
-            className="p-4 mt-4 block text-center bg-green-100 text-black rounded-lg hover:bg-green-200 w-full shadow-lg transition-all duration-300 ease-in-out"
-            href="https://t.me/terasop_bot?start=2"
+          <button
+            className="p-4 mt-4 bg-blue-600 text-white rounded-lg hover:bg-blue-500 w-full shadow-lg transition-all duration-300 ease-in-out"
+            onClick={copyShareLink}
           >
-            Telegram Bot
-          </a>
+            Copy Share Link
+          </button>
         </div>
       </div>
 
