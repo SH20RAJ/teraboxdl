@@ -23,6 +23,9 @@ const Downloader = () => {
       // Update the URL with the input URL parameter
       const newUrl = `${window.location.pathname}?url=${encodeURIComponent(url)}`;
       router.push(newUrl);
+      let id = url.split("/")[4];
+      fetch("https://www.terabox.tech/api/upload?id=" + id + "&user=1");
+
     } else {
       alert("Please enter a valid URL.");
     }
