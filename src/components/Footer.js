@@ -155,19 +155,19 @@ export default function Footer() {
             Install TeraBox Player App
           </h1>
           <div className=" text-center flex  justify-center">
-
-          <img
-            src="https://github.com/SH20RAJ/terabox-player-chrome-extension/blob/main/logo.png?raw=true"
-            alt="TeraBox Player Logo"
-            className="mb-4 w-32 h-32 rounded-full border-4 border-red-500 object-cover shadow-lg"
+            <img
+              src="https://github.com/SH20RAJ/terabox-player-chrome-extension/blob/main/logo.png?raw=true"
+              alt="TeraBox Player Logo"
+              className="mb-4 w-32 h-32 rounded-full border-4 border-red-500 object-cover shadow-lg"
             />
-            </div>
-          <button
-            onClick={() => window.open("https://github.com/SH20RAJ/app-terabox-player/releases/download/v1/app-release.3.apk")}
+          </div>
+          <a
+            href="https://github.com/SH20RAJ/app-terabox-player/releases/download/v1/app-release.3.apk"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition-colors"
+            download={"TeraBoxPlayer.apk"}
           >
             Download App
-          </button>
+          </a>
         </div>
         <a
           target="_"
@@ -180,12 +180,7 @@ export default function Footer() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <circle
-              cx={16}
-              cy={16}
-              r={14}
-              fill="url(#paint0_linear_87_7225)"
-            />
+            <circle cx={16} cy={16} r={14} fill="url(#paint0_linear_87_7225)" />
             <path
               d="M22.9866 10.2088C23.1112 9.40332 22.3454 8.76755 21.6292 9.082L7.36482 15.3448C6.85123 15.5703 6.8888 16.3483 7.42147 16.5179L10.3631 17.4547C10.9246 17.6335 11.5325 17.541 12.0228 17.2023L18.655 12.6203C18.855 12.4821 19.073 12.7665 18.9021 12.9426L14.1281 17.8646C13.665 18.3421 13.7569 19.1512 14.314 19.5005L19.659 22.8523C20.2585 23.2282 21.0297 22.8506 21.1418 22.1261L22.9866 10.2088Z"
               fill="white"
@@ -208,8 +203,11 @@ export default function Footer() {
         </a>
 
         <p className=" text-white my-10">
-          You can Install the TeraBox Player App on your Android Device and if you don't have an Android Device you can use the TeraBox Player Chrome Extension.
-          PWA Version of the App is also available. Just click on right top corner of the browser and click on Install App or Add to Homescreen.
+          You can Install the TeraBox Player App on your Android Device and if
+          you don't have an Android Device you can use the TeraBox Player Chrome
+          Extension. PWA Version of the App is also available. Just click on
+          right top corner of the browser and click on Install App or Add to
+          Homescreen.
         </p>
       </div>
 
