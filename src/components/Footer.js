@@ -154,27 +154,19 @@ export default function Footer() {
           <h1 className="text-3xl font-bold text-white mb-4">
             Install TeraBox Player App
           </h1>
+          <div className=" text-center flex  justify-center">
+
           <img
             src="https://github.com/SH20RAJ/terabox-player-chrome-extension/blob/main/logo.png?raw=true"
             alt="TeraBox Player Logo"
             className="mb-4 w-32 h-32 rounded-full border-4 border-red-500 object-cover shadow-lg"
-          />
+            />
+            </div>
           <button
-            onClick={() => {
-              if (
-                window.navigator.standalone ||
-                window.matchMedia("(display-mode: standalone)").matches
-              ) {
-                alert("App is already installed.");
-              } else {
-                // Trigger PWA install prompt
-                const event = new Event("beforeinstallprompt");
-                window.dispatchEvent(event);
-              }
-            }}
+            onClick={() => window.open("https://github.com/SH20RAJ/app-terabox-player/releases/download/v1/app-release.3.apk")}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition-colors"
           >
-            Install App
+            Download App
           </button>
         </div>
         <a
@@ -214,6 +206,11 @@ export default function Footer() {
           </svg>
           Open Telegram Bot
         </a>
+
+        <p className=" text-white my-10">
+          You can Install the TeraBox Player App on your Android Device and if you don't have an Android Device you can use the TeraBox Player Chrome Extension.
+          PWA Version of the App is also available. Just click on right top corner of the browser and click on Install App or Add to Homescreen.
+        </p>
       </div>
 
       {/* Footer */}
