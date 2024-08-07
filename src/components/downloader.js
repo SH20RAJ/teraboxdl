@@ -114,6 +114,13 @@ const Downloader = () => {
           >
             Copy Share Link
           </button>
+
+          <a
+            className="p-4 mt-4 bg-blue-600 text-white rounded-lg hover:bg-blue-500 w-full shadow-lg transition-all duration-300 ease-in-out"
+            href={"https://apis.forn.fun/tera/data.php?id=" + inputUrl.split("/")[4]}
+          >
+            Download Video
+          </a>
         </div>
       </div>
 
