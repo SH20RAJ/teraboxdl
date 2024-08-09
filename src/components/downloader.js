@@ -131,6 +131,22 @@ const Downloader = () => {
           className="shadow-lg"
         />
       </a>
+
+      {/* create list of other tools */}
+      <div className="mt-6">
+        <h2 className="text-2xl font-semibold mb-2">Other Tools</h2>
+        <ul className=" flex  justify-center gap-2 p-2 m-2">
+          <li >
+            <a className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:" href="https://insta.terabox.tech/">Instagram Reels Downloader</a>
+          </li>
+          <li >
+            <a className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:" href="https://player.terabox.tech/ads">TikTok Video Downloader</a>
+          </li>
+          <li >
+            <a className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:" href="https://tagsgen.terabox.tech/">YouTube Tags Generator</a>
+          </li>
+        </ul>
+        </div>
     </div>
   );
 };
