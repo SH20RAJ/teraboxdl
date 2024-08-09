@@ -250,7 +250,8 @@
         // get the video URL from ?url= parameter
 
         var videoUrl = url.split('?url=')[1];
-        if(videoUrl == undefined) {
+        videoUrl = atob(videoUrl);
+        if (videoUrl == undefined) {
             alert('Video URL not found');
         }
         // redirect to the download page after processing the video URL of 5 seconds
