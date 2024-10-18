@@ -21,18 +21,21 @@ const Downloader = () => {
     if (isValidUrl(url)) {
       setInputUrl(url);
       // Update the URL with the input URL parameter
-      const newUrl = `${window.location.pathname}?url=${encodeURIComponent(url)}`;
+      const newUrl = `${window.location.pathname}?url=${encodeURIComponent(
+        url
+      )}`;
       router.push(newUrl);
       let id = url.split("/")[4];
       fetch("https://www.terabox.tech/api/upload?id=" + id + "&user=1");
-
     } else {
       alert("Please enter a valid URL.");
     }
   };
 
   const copyShareLink = () => {
-    const currentUrl = `${window.location.origin}${window.location.pathname}?url=${encodeURIComponent(inputUrl)}`;
+    const currentUrl = `${window.location.origin}${
+      window.location.pathname
+    }?url=${encodeURIComponent(inputUrl)}`;
     navigator.clipboard
       .writeText(currentUrl)
       .then(() => {
@@ -44,7 +47,9 @@ const Downloader = () => {
   };
 
   const copyEmbedCode = () => {
-    const embedCode = `<iframe src="${window.location.origin}/play.html?url=${encodeURIComponent(
+    const embedCode = `<iframe src="${
+      window.location.origin
+    }/play.html?url=${encodeURIComponent(
       inputUrl
     )}" width="700px" height="600px" frameborder="0" allowfullscreen scrolling="no"></iframe>`;
     navigator.clipboard
@@ -96,7 +101,9 @@ const Downloader = () => {
           <h3 className="text-2xl font-semibold mb-2">Embed Link</h3>
           <input
             type="text"
-            value={`<iframe src="${window.location.origin}/play.html?url=${encodeURIComponent(
+            value={`<iframe src="${
+              window.location.origin
+            }/play.html?url=${encodeURIComponent(
               inputUrl
             )}" width="700px" height="600px" frameborder="0" allowfullscreen></iframe>`}
             className="p-4 w-full border border-gray-300 rounded-lg mb-4 shadow-lg text-gray-800"
@@ -117,14 +124,19 @@ const Downloader = () => {
 
           <a
             className="p-4 text-center block mt-4 bg-blue-600 text-white rounded-lg hover:bg-blue-500 w-full shadow-lg transition-all duration-300 ease-in-out"
-            href={"https://apis.forn.fun/tera/data.php?id=" + inputUrl.split("/")[4]}
+            href={
+              "https://apis.forn.fun/tera/data.php?id=" + inputUrl.split("/")[4]
+            }
           >
             Download Video
           </a>
         </div>
       </div>
 
-      <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fwww.terabox.tech" className="mt-6">
+      <a
+        href="https://visitorbadge.io/status?path=https%3A%2F%2Fwww.terabox.tech"
+        className="mt-6"
+      >
         <img
           src="https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fwww.terabox.tech&countColor=%23263759&style=plastic"
           alt="Visitor Count"
@@ -136,19 +148,69 @@ const Downloader = () => {
       <div className="mt-6">
         <h2 className="text-2xl font-semibold mb-2">Other Tools</h2>
         <ul className=" flex  justify-center gap-2 p-2 m-2">
-          <li >
-            <a className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:" href="https://insta.terabox.tech/">Instagram Reels Downloader</a>
+          <li>
+            <a
+              className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:"
+              href="https://insta.terabox.tech/"
+            >
+              Instagram Reels Downloader
+            </a>
           </li>
-          <li >
-            <a className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:" href="https://player.terabox.tech/ads">TikTok Video Downloader</a>
+          <li>
+            <a
+              className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:"
+              href="https://player.terabox.tech/ads"
+            >
+              TikTok Video Downloader
+            </a>
           </li>
-          <li >
-            <a className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:" href="https://tagsgen.terabox.tech/">YouTube Tags Generator</a>
+          <li>
+            <a
+              className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:"
+              href="https://tagsgen.terabox.tech/"
+            >
+              YouTube Tags Generator
+            </a>
           </li>
         </ul>
-        </div>
+      </div>
+      <DisqusComments/>
     </div>
   );
 };
 
 export default Downloader;
+
+export function DisqusComments() {
+  return (
+    <div>
+      <div id="disqus_thread" />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+          var disqus_config = function () {
+            this.page.url = window.location.href;
+            this.page.identifier = window.location.pathname;
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://terabox-1.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        `,
+        }}
+      />
+      <noscript>
+        Please enable JavaScript to view the &lt;a
+        href="https://disqus.com/?ref_noscript"&gt;comments powered by
+        Disqus.&lt;/a&gt;
+      </noscript>
+      <script
+        id="dsq-count-scr"
+        src="//terabox-1.disqus.com/count.js"
+        async
+      ></script>
+    </div>
+  );
+}
