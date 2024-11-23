@@ -133,6 +133,8 @@ const Downloader = () => {
         </div>
       </div>
 
+      <TeraboxScriptSection/>
+
       <a
         href="https://visitorbadge.io/status?path=https%3A%2F%2Fwww.terabox.tech"
         className="mt-6"
@@ -143,6 +145,8 @@ const Downloader = () => {
           className="shadow-lg"
         />
       </a>
+
+      
 
       {/* create list of other tools */}
       <div className="mt-6">
@@ -214,3 +218,29 @@ export function DisqusComments() {
     </div>
   );
 }
+import React from 'react';
+
+const TeraboxScriptSection = () => {
+  return (
+    <section className="py-16  text-center">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-6">🎥 Terabox Video Player/Downloader Script</h1>
+        <p className="text-lg text-gray-700 mb-8">
+          Simplify your workflow with our Terabox script! Easily play, embed, and download Terabox videos directly from your website or application. Ideal for content creators and developers looking to enhance video integration seamlessly. contact us for more information. jokes4ush@gmail.com
+        </p>
+        <button
+          onClick={() =>
+            window.open(
+              'https://buymeacoffee.com/sh20raj/e/335508',
+              '_blank'
+            )
+          }
+          className="px-6 py-3 text-lg font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-400 transition-colors"
+        >
+          Buy Now 🚀
+        </button>
+      </div>
+    </section>
+  );
+};
+
