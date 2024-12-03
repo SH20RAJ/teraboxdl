@@ -87,7 +87,7 @@ const Downloader = () => {
       />
 
       <div className="embedder w-full flex flex-col justify-center items-center mt-4 p-6 rounded-lg shadow-lg">
-        {inputUrl && (
+        {inputUrl && (<>
           <iframe
             onContextMenu={(e) => e.preventDefault()}
             id="iframe"
@@ -95,8 +95,19 @@ const Downloader = () => {
             src={`/play.html?url=${encodeURIComponent(inputUrl)}`}
             allowFullScreen
             scrolling="no"
-          />
-        )}
+            />
+          
+          <a
+            className="p-4 text-center block mt-4 bg-purple-600 text-white rounded-lg hover:bg-purple-500 w-full shadow-lg transition-all duration-300 ease-in-out"
+            href={`/play.html?url=${encodeURIComponent(inputUrl)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            >
+            Open Video
+          </a>
+           
+
+        
         <div className="w-full max-w-3xl mt-4">
           <h3 className="text-2xl font-semibold mb-2">Embed Link</h3>
           <input
@@ -130,7 +141,16 @@ const Downloader = () => {
           >
             Download Video
           </a>
-        </div>
+
+          <a
+            className="p-4 text-center block mt-4 bg-purple-600 text-white rounded-lg hover:bg-purple-500 w-full shadow-lg transition-all duration-300 ease-in-out"
+            href={`/play.html?url=${encodeURIComponent(inputUrl)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open Video
+          </a>
+        </div> </>)}
       </div>
 
       <TeraboxScriptSection/>
