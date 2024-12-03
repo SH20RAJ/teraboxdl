@@ -95,6 +95,7 @@ const Downloader = () => {
             src={`/play.html?url=${encodeURIComponent(inputUrl)}`}
             allowFullScreen
             scrolling="no"
+            allow="fullscreen; autoplay; encrypted-media; picture-in-picture"
             />
           
           <a
