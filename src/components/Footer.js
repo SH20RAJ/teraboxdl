@@ -243,6 +243,20 @@ export default function Footer() {
             <a href="/dmca" className="hover:text-gray-400 transition-colors">
               DMCA
             </a>
+            <a
+              href="https://www.apped.me/"
+              className="hover:text-gray-400 transition-colors"
+              rel="dofollow"
+            >
+              Download Apps for Free
+            </a>
+            <a
+              href="https://devart.terabox.tech/"
+              className="hover:text-gray-400 transition-colors"
+              rel="dofollow"
+            >
+              DevArt - Articles
+            </a>
           </div>
         </div>
       </footer>
