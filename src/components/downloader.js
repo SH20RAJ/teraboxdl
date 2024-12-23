@@ -26,7 +26,7 @@ const Downloader = () => {
       )}`;
       router.push(newUrl);
       let id = url.split("/")[4];
-      fetch("https://www.terabox.tech/api/upload?id=" + id + "&user=1");
+      fetch("https://apis.terabox.tech/api/upload?id=" + id + "&user=1");
     } else {
       alert("Please enter a valid URL.");
     }
