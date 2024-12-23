@@ -72,134 +72,80 @@ const Downloader = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-600 text-white p-6">
-      <h1 className="text-4xl font-extrabold mb-6 text-center bg-white text-blue-600 rounded-lg shadow-lg p-4">
-        Terabox.tech Player, Embed, Download Terabox Videos
-      </h1>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8">
+      <div className="max-w-4xl mx-auto space-y-8">
+        {/* Hero Section */}
+        <div className="text-center space-y-4">
+          <h1 className="text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-violet-400">
+            Terabox Video Downloader
+          </h1>
+          <p className="text-slate-400 text-lg">
+            Download, embed and share Terabox videos seamlessly
+          </p>
+        </div>
 
-      <input
-        id="input-url"
-        placeholder="Enter Terabox URL"
-        type="text"
-        value={inputUrl}
-        onChange={handleUrlChange}
-        className="p-4 w-full max-w-md border border-gray-300 rounded-lg mb-4 shadow-lg text-gray-800"
-      />
-
-      <div className="embedder w-full flex flex-col justify-center items-center mt-4 p-6 rounded-lg shadow-lg">
-        {inputUrl && (<>
-          <iframe
-            onContextMenu={(e) => e.preventDefault()}
-            id="iframe"
-            className="w-full max-w-3xl h-[600px] border-0 mb-4 rounded-lg shadow-lg"
-            src={`/play.html?url=${encodeURIComponent(inputUrl)}`}
-            allowFullScreen
-            scrolling="no"
-            allow="fullscreen; autoplay; encrypted-media; picture-in-picture"
+        {/* Input Section */}
+        <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-slate-700">
+          <div className="relative">
+            <input
+              id="input-url"
+              type="text"
+              value={inputUrl}
+              onChange={handleUrlChange}
+              placeholder="Paste your Terabox URL here"
+              className="w-full bg-slate-900/50 text-white placeholder-slate-400 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
             />
-          
-          <a
-            className="p-4 text-center block mt-4 bg-purple-600 text-white rounded-lg hover:bg-purple-500 w-full shadow-lg transition-all duration-300 ease-in-out"
-            href={`/play.html?url=${encodeURIComponent(inputUrl)}`}
-            target="_blank"
-            rel="noopener noreferrer"
+          </div>
+        </div>
+
+        {/* Action Buttons */}
+        {inputUrl && (
+          <div className="grid gap-4 md:grid-cols-2">
+            <button
+              onClick={copyEmbedCode}
+              className="group relative px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
             >
-            Open Video
-          </a>
-           
+              <span className="flex items-center justify-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                Copy Embed Code
+              </span>
+            </button>
 
-        
-        <div className="w-full max-w-3xl mt-4">
-          <h3 className="text-2xl font-semibold mb-2">Embed Link</h3>
-          <input
-            type="text"
-            value={`<iframe src="${
-              window.location.origin
-            }/play.html?url=${encodeURIComponent(
-              inputUrl
-            )}" width="700px" height="600px" frameborder="0" allowfullscreen></iframe>`}
-            className="p-4 w-full border border-gray-300 rounded-lg mb-4 shadow-lg text-gray-800"
-            readOnly
-          />
-          <button
-            className="p-4 bg-green-600 text-white rounded-lg hover:bg-green-500 w-full shadow-lg transition-all duration-300 ease-in-out"
-            onClick={copyEmbedCode}
-          >
-            Copy Embed Code
-          </button>
-          <button
-            className="p-4 mt-4 bg-blue-600 text-white rounded-lg hover:bg-blue-500 w-full shadow-lg transition-all duration-300 ease-in-out"
-            onClick={copyShareLink}
-          >
-            Copy Share Link
-          </button>
+            <button
+              onClick={copyShareLink}
+              className="group relative px-6 py-3 bg-violet-600 hover:bg-violet-500 rounded-xl transition-all duration-200 shadow-lg hover:shadow-violet-500/25"
+            >
+              <span className="flex items-center justify-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+                Share Link
+              </span>
+            </button>
+          </div>
+        )}
 
-          <a
-            className="p-4 text-center block mt-4 bg-blue-600 text-white rounded-lg hover:bg-blue-500 w-full shadow-lg transition-all duration-300 ease-in-out"
-            href={
-              "https://apis.forn.fun/tera/data.php?id=" + inputUrl.split("/")[4]
-            }
-          >
-            Download Video
-          </a>
-
-          <a
-            className="p-4 text-center block mt-4 bg-purple-600 text-white rounded-lg hover:bg-purple-500 w-full shadow-lg transition-all duration-300 ease-in-out"
-            href={`/play.html?url=${encodeURIComponent(inputUrl)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open Video
-          </a>
-        </div> </>)}
+        {/* Preview Section */}
+        {inputUrl && (
+          <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-slate-700">
+            <iframe
+              src={`/play.html?url=${encodeURIComponent(inputUrl)}`}
+              className="w-full aspect-video rounded-lg"
+              frameBorder="0"
+              allowFullScreen
+              scrolling="no"
+            />
+            <a
+              href={`https://apis.forn.fun/tera/data.php?id=${inputUrl.split("/")[4]}`}
+              className="mt-4 block text-center px-6 py-3 bg-green-600 hover:bg-green-500 rounded-xl transition-all duration-200 shadow-lg hover:shadow-green-500/25"
+            >
+              Download Video
+            </a>
+          </div>
+        )}
       </div>
-
-      <TeraboxScriptSection/>
-
-      <a
-        href="https://visitorbadge.io/status?path=https%3A%2F%2Fwww.terabox.tech"
-        className="mt-6"
-      >
-        <img
-          src="https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fwww.terabox.tech&countColor=%23263759&style=plastic"
-          alt="Visitor Count"
-          className="shadow-lg"
-        />
-      </a>
-
-      
-
-      {/* create list of other tools */}
-      <div className="mt-6">
-        <h2 className="text-2xl font-semibold mb-2">Other Tools</h2>
-        <ul className=" flex  justify-center gap-2 p-2 m-2">
-          <li>
-            <a
-              className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:"
-              href="https://insta.terabox.tech/"
-            >
-              Instagram Reels Downloader
-            </a>
-          </li>
-          <li>
-            <a
-              className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:"
-              href="https://player.terabox.tech/ads"
-            >
-              TikTok Video Downloader
-            </a>
-          </li>
-          <li>
-            <a
-              className=" bg-white p-2 text-blue-600 shadow-xl rounded-sm outline-dashed hover:bg-black hover:"
-              href="https://tagsgen.terabox.tech/"
-            >
-              YouTube Tags Generator
-            </a>
-          </li>
-        </ul>
-      </div>
-      <DisqusComments/>
     </div>
   );
 };

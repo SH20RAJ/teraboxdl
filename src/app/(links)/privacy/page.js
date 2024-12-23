@@ -1,72 +1,72 @@
 import { Header } from "@/components/Header";
+import { PageContainer } from "@/components/layout/PageContainer";
 import React from "react";
 
 export default function page() {
   return (
     <>
       <Header />
-      <div className="container p-10 text-lg lead">
+      <PageContainer title="Privacy Policy">
         <Content />
-      </div>
+      </PageContainer>
     </>
   );
 }
 
 const Content = () => {
   return (
-    <>
-      <div>
-        <p className=" p-1 m-2 ">
-          <h1 className=" text-4xl">Privacy Policy for terabox.tech</h1>
-        </p>
-        <p className=" p-1 m-2 ">
+    <div className="space-y-8">
+      <section className="space-y-4">
+        <p className="text-lg leading-relaxed">
           At terabox.tech, accessible from{" "}
-          <a href="https://terabox.tech">https://terabox.tech</a>, one of our
-          main priorities is the privacy of our visitors. This Privacy Policy
+          <a href="https://terabox.tech" className="text-blue-600 dark:text-blue-400 hover:underline">
+            https://terabox.tech
+          </a>
+          , one of our main priorities is the privacy of our visitors. This Privacy Policy
           document contains types of information that is collected and recorded
           by terabox.tech and how we use it.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           If you have additional questions or require more information about our
           Privacy Policy, do not hesitate to contact us.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           This Privacy Policy applies only to our online activities and is valid
           for visitors to our website with regards to the information that they
           shared and/or collect in terabox.tech. This policy is not applicable
           to any information collected offline or via channels other than this
           website.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">Consent</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           By using our website, you hereby consent to our Privacy Policy and
           agree to its terms.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">Information we collect</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           The personal information that you are asked to provide, and the
           reasons why you are asked to provide it, will be made clear to you at
           the point we ask you to provide your personal information.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           If you contact us directly, we may receive additional information
           about you such as your name, email address, phone number, the contents
           of the message and/or attachments you may send us, and any other
           information you may choose to provide.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           When you register for an Account, we may ask for your contact
           information, including items such as name, company name, address,
           email address, and telephone number.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">How we use your information</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           We use the information we collect in various ways, including to:
         </p>
         <ul>
@@ -83,10 +83,10 @@ const Content = () => {
           <li>Send you emails</li>
           <li>Find and prevent fraud</li>
         </ul>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">Log Files</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           terabox.tech follows a standard procedure of using log files. These
           files log visitors when they visit websites. All hosting companies do
           this and a part of hosting services' analytics. The information
@@ -98,10 +98,10 @@ const Content = () => {
           tracking users' movement on the website, and gathering demographic
           information.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">Cookies</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           Like any other website, terabox.tech uses "cookies". These cookies are
           used to store information including visitors' preferences, and the
           pages on the website that the visitor accessed or visited. The
@@ -109,10 +109,10 @@ const Content = () => {
           our web page content based on visitors' browser type and/or other
           information.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">Our Advertising Partners</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           Some of advertisers on our site may use cookies and web beacons. Our
           advertising partners are listed below. Each of our advertising
           partners has their own Privacy Policy for their policies on user data.
@@ -121,21 +121,21 @@ const Content = () => {
         <ul>
           <li>
             Google:{" "}
-            <a href="https://policies.google.com/technologies/ads">
+            <a href="https://policies.google.com/technologies/ads" className="text-blue-600 dark:text-blue-400 hover:underline">
               https://policies.google.com/technologies/ads
             </a>
           </li>
         </ul>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">
             Advertising Partners Privacy Policies
           </strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           You may consult this list to find the Privacy Policy for each of the
           advertising partners of terabox.tech.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           Third-party ad servers or ad networks use technologies like cookies,
           JavaScript, or Web Beacons that are used in their respective
           advertisements and links that appear on terabox.tech, which are sent
@@ -144,32 +144,32 @@ const Content = () => {
           effectiveness of their advertising campaigns and/or to personalize the
           advertising content that you see on websites that you visit.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           Note that terabox.tech has no access to or control over these cookies
           that are used by third-party advertisers.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">Third Party Privacy Policies</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           terabox.tech's Privacy Policy does not apply to other advertisers or
           websites. Thus, we are advising you to consult the respective Privacy
           Policies of these third-party ad servers for more detailed
           information. It may include their practices and instructions about how
           to opt-out of certain options.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           You can choose to disable cookies through your individual browser
           options. To know more detailed information about cookie management
           with specific web browsers, it can be found at the browsers'
           respective websites.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">
             CCPA Privacy Rights (Do Not Sell My Personal Information)
           </strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           Under the CCPA, among other rights, California consumers have the
           right to:
         </p>
@@ -188,14 +188,14 @@ const Content = () => {
             sell the consumer's personal data.
           </li>
         </ul>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           If you make a request, we have one month to respond to you. If you
           would like to exercise any of these rights, please contact us.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">GDPR Data Protection Rights</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           We would like to make sure you are fully aware of all of your data
           protection rights. Every user is entitled to the following:
         </p>
@@ -229,43 +229,47 @@ const Content = () => {
             or directly to you, under certain conditions.
           </li>
         </ul>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           If you make a request, we have one month to respond to you. If you
           would like to exercise any of these rights, please contact us.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">Children's Information</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           Another part of our priority is adding protection for children while
           using the internet. We encourage parents and guardians to observe,
           participate in, and/or monitor and guide their online activity.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           terabox.tech does not knowingly collect any Personal Identifiable
           Information from children under the age of 13. If you think that your
           child provided this kind of information on our website, we strongly
           encourage you to contact us immediately and we will do our best
           efforts to promptly remove such information from our records.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">Changes to This Privacy Policy</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           We may update our Privacy Policy from time to time. Thus, we advise
           you to review this page periodically for any changes. We will notify
           you of any changes by posting the new Privacy Policy on this page.
           These changes are effective immediately after they are posted on this
           page.
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           <strong className="text-2xl">Contact Us</strong>
         </p>
-        <p className=" p-1 m-2 ">
+        <p className="text-lg leading-relaxed">
           If you have any questions or suggestions about our Privacy Policy, do
           not hesitate to contact us.
         </p>
+      </section>
+      
+      <div className="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+        <p className="text-sm text-gray-500">Last updated: 2024</p>
       </div>
-    </>
+    </div>
   );
 };

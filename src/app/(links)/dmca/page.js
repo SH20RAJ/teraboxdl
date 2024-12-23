@@ -1,21 +1,25 @@
 import { Header } from "@/components/Header";
+import { PageContainer } from "@/components/layout/PageContainer";
 import React from "react";
 
 export default function page() {
   return (
     <>
       <Header />
-      <div className="container p-10 text-lg lead">
+      <PageContainer title="DMCA Policy">
         <Content />
-      </div>
+      </PageContainer>
     </>
   );
 }
 
 const Content = () => {
   return (
-    <>
-      <div>
+    <div className="space-y-8">
+      <section className="space-y-4">
+        <p className="text-lg leading-relaxed">
+          Welcome to our DMCA Policy page. Here, we outline our procedures for reporting copyright violations and handling repeat infringements.
+        </p>
         <p>
           <strong>DMCA Policy</strong>
         </p>
@@ -68,7 +72,14 @@ const Content = () => {
           associated with terabox.app or Flextech Inc.
         </p>
         <p>© 2024 - Present TeraDownloader.com All rights reserved.</p>
+      </section>
+
+      <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6 mt-8">
+        <h3 className="text-xl font-semibold mb-4">Contact Our DMCA Agent</h3>
+        <p className="text-blue-600 dark:text-blue-400">
+          mail.teradownloader@gmail.com
+        </p>
       </div>
-    </>
+    </div>
   );
 };

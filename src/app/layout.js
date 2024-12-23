@@ -60,7 +60,7 @@ const jsonld = `
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className=" bg-black"  >
+    <html lang="en" className=""  >
       <head>
         <link rel="icon" href="/image.png" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
