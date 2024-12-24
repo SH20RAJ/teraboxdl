@@ -131,17 +131,18 @@ const Downloader = () => {
         {inputUrl && (
           <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-slate-700">
             <iframe
-              src={`/play.html?url=${encodeURIComponent(inputUrl)}`}
+              src={`https://player.terabox.tech/?url=${encodeURIComponent(inputUrl)}`}
               className="w-full aspect-video rounded-lg"
               frameBorder="0"
               allowFullScreen
               scrolling="no"
             />
             <a
-              href={`https://apis.forn.fun/tera/data.php?id=${inputUrl.split("/")[4]}`}
+              href={`https://player.terabox.tech/?url=${encodeURIComponent(inputUrl)}`}
+              target="_blank"
               className="mt-4 block text-center px-6 py-3 bg-green-600 hover:bg-green-500 rounded-xl transition-all duration-200 shadow-lg hover:shadow-green-500/25"
             >
-              Download Video
+              Open Video
             </a>
           </div>
         )}
